@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "title": "京都和大阪 3 日（示例）",
+  "dateRange": "4.10–4.12",
+  "places": {
+    "hnd": {"name": "羽田机场", "nameLocal": "Haneda Airport", "lat": 35.5494, "lng": 139.7798, "approx": false, "kind": "transport", "desc": "", "facts": []},
+    "kix": {"name": "关西国际机场", "nameLocal": "Kansai International Airport", "lat": 34.432, "lng": 135.2304, "approx": false, "kind": "transport", "desc": "", "facts": [["去京都", "JR Haruka 特急，约 75 分钟"]]},
+    "kyoto_st": {"name": "京都站", "nameLocal": "Kyoto Station", "lat": 34.9858, "lng": 135.7588, "approx": false, "kind": "transport", "desc": "", "facts": []},
+    "hotel": {"name": "京都站附近的酒店", "lat": 34.9872, "lng": 135.7605, "approx": true, "kind": "hotel", "desc": "示例里的住处，位置为大致位置。", "facts": [["入住", "4.10–4.12，2 晚"]]},
+    "inari": {"name": "伏见稻荷大社", "nameLocal": "伏見稲荷大社", "lat": 34.9671, "lng": 135.7727, "approx": false, "kind": "sight", "desc": "千本鸟居，早上人少。", "facts": [["开放", "全天"], ["门票", "免费"]], "link": "https://inari.jp"},
+    "nishiki": {"name": "锦市场", "nameLocal": "錦市場", "lat": 34.6655, "lng": 135.5066, "approx": false, "kind": "food", "desc": "边走边吃当午饭。", "facts": [["营业", "大多 10:00–17:00"]]},
+    "kiyomizu": {"name": "清水寺", "nameLocal": "清水寺", "lat": 34.9949, "lng": 135.785, "approx": false, "kind": "sight", "desc": "清水舞台，下山经二年坂、三年坂。", "facts": [["门票", "500 日元"]], "link": "https://www.kiyomizudera.or.jp"},
+    "yasaka": {"name": "八坂神社", "nameLocal": "八坂神社", "lat": 35.0037, "lng": 135.7785, "approx": false, "kind": "sight", "desc": "", "facts": []},
+    "gion": {"name": "祇园花见小路", "nameLocal": "花見小路通", "lat": 35.0025, "lng": 135.7751, "approx": true, "kind": "sight", "desc": "傍晚散步，附近吃晚饭。", "facts": []},
+    "bamboo": {"name": "岚山竹林小径", "nameLocal": "竹林の小径", "lat": 35.017, "lng": 135.6713, "approx": false, "kind": "sight", "desc": "8 点前到，人最少。", "facts": []},
+    "togetsukyo": {"name": "渡月桥", "nameLocal": "渡月橋", "lat": 35.0129, "lng": 135.6778, "approx": false, "kind": "sight", "desc": "", "facts": []},
+    "osaka_castle": {"name": "大阪城", "nameLocal": "大阪城", "lat": 34.6873, "lng": 135.5262, "approx": false, "kind": "sight", "desc": "天守阁里是博物馆。", "facts": [["门票", "600 日元"], ["开放", "09:00–17:00"]]},
+    "dotonbori": {"name": "道顿堀", "nameLocal": "道頓堀", "lat": 34.6687, "lng": 135.5013, "approx": false, "kind": "food", "desc": "章鱼烧、大阪烧。", "facts": []},
+    "nara": {"name": "奈良公园", "nameLocal": "奈良公園", "lat": 34.6851, "lng": 135.843, "approx": false, "kind": "backup", "desc": "下雨或时间多出来时的半日备选。", "facts": []},
+    "kinkakuji": {"name": "金阁寺", "nameLocal": "金閣寺", "lat": 35.0394, "lng": 135.7292, "approx": false, "kind": "backup", "desc": "", "facts": []}
+  },
+  "days": [
+    {"date": "4.10", "weekday": "周五", "title": "飞到关西", "notes": "晚饭在京都站附近吃。",
+     "stops": [
+      {"place": "hnd", "time": "15:30", "leg": "飞往关西机场 15:30–16:45"},
+      {"place": "kix", "time": "16:45", "leg": "JR Haruka 17:15–18:30"},
+      {"place": "kyoto_st", "time": "18:30", "leg": "步行 5 分钟"},
+      {"place": "hotel", "time": "18:40", "leg": ""}
+    ]},
+    {"date": "4.11", "weekday": "周六", "title": "东山一日", "notes": "07:00 起床。示例里故意把锦市场的坐标放在了大阪，用来演示提醒。",
+     "stops": [
+      {"place": "hotel", "time": "07:30", "leg": "JR 奈良线 2 站"},
+      {"place": "inari", "time": "08:00", "leg": "京阪电车到祇园四条"},
+      {"place": "nishiki", "time": "11:30", "leg": "巴士约 15 分钟"},
+      {"place": "kiyomizu", "time": "13:30", "leg": "步行经二年坂"},
+      {"place": "yasaka", "time": "16:00", "leg": "步行 5 分钟"},
+      {"place": "gion", "time": "17:00", "leg": "巴士回京都站"},
+      {"place": "hotel", "time": "20:30", "leg": ""}
+    ]},
+    {"date": "4.12", "weekday": "周日", "title": "岚山和大阪", "notes": "退房后行李寄存在京都站，或直接带到大阪。",
+     "stops": [
+      {"place": "hotel", "time": "07:00", "leg": "JR 嵯峨野线到嵯峨岚山"},
+      {"place": "bamboo", "time": "07:40", "leg": "步行 10 分钟"},
+      {"place": "togetsukyo", "time": "09:30", "leg": "JR 到大阪，约 1 小时"},
+      {"place": "osaka_castle", "time": "12:30", "leg": "地铁到难波"},
+      {"place": "dotonbori", "time": "15:30", "leg": "南海特急 Rapi:t 到机场"},
+      {"place": "kix", "time": "18:30", "leg": "20:30 返程航班"}
+    ]}
+  ],
+  "backups": ["nara", "kinkakuji"]
+}
