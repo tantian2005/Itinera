@@ -4,7 +4,7 @@
 
 Turn a travel guide into an itinerary map you can edit: day-by-day timeline, transport, drag to reorder, share as an image.
 
-**Use it online: <https://tantian2005.github.io/itinera/>**
+**Use it online: <https://tantian2005.github.io/Itinera/>**
 
 There are no accounts and no server. Your trips are kept in your own browser, and your guide is never uploaded.
 

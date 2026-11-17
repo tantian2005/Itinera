@@ -4,7 +4,7 @@
 
 把 AI 整理的旅行攻略变成可以编辑的行程地图：时间线、交通、拖动排序、分享图片。
 
-**在线使用：<https://tantian2005.github.io/itinera/>**
+**在线使用：<https://tantian2005.github.io/Itinera/>**
 
 没有账号，也没有服务器。行程只保存在你自己的浏览器里，攻略不会上传。
 
