@@ -1,0 +1,302 @@
+{
+  "version": 1,
+  "title": "成都 3 日（示例）",
+  "dateRange": "5.1–5.3",
+  "places": {
+    "sha": {
+      "name": "上海虹桥国际机场",
+      "lat": 31.1977,
+      "lng": 121.3345,
+      "approx": false,
+      "kind": "transport",
+      "desc": "",
+      "facts": []
+    },
+    "tfu": {
+      "name": "成都天府国际机场",
+      "lat": 30.3036,
+      "lng": 104.4457,
+      "approx": false,
+      "kind": "transport",
+      "desc": "T1 航站楼",
+      "facts": [
+        [
+          "去市区",
+          "地铁 18 号线，约 1 小时"
+        ]
+      ]
+    },
+    "hotel": {
+      "name": "春熙路附近的酒店",
+      "lat": 30.656,
+      "lng": 104.0785,
+      "approx": true,
+      "kind": "hotel",
+      "desc": "住 2 晚（示例住处）",
+      "facts": [
+        [
+          "入住",
+          "5.1–5.3"
+        ]
+      ]
+    },
+    "kuanzhai": {
+      "name": "宽窄巷子",
+      "lat": 30.6662,
+      "lng": 104.0508,
+      "approx": false,
+      "kind": "sight",
+      "desc": "晚上灯亮以后更好看",
+      "facts": []
+    },
+    "panda": {
+      "name": "成都大熊猫繁育研究基地",
+      "lat": 30.7432,
+      "lng": 104.1329,
+      "approx": false,
+      "kind": "sight",
+      "desc": "早上熊猫最活跃，尽量开门就到",
+      "facts": [
+        [
+          "开放",
+          "07:30–18:00"
+        ],
+        [
+          "门票",
+          "55 元"
+        ]
+      ],
+      "link": "https://www.panda.org.cn"
+    },
+    "wenshu": {
+      "name": "文殊院",
+      "lat": 30.6779,
+      "lng": 104.0702,
+      "approx": false,
+      "kind": "sight",
+      "desc": "素斋当午饭",
+      "facts": [
+        [
+          "门票",
+          "免费"
+        ]
+      ]
+    },
+    "renmin": {
+      "name": "人民公园",
+      "lat": 30.6597,
+      "lng": 104.0548,
+      "approx": false,
+      "kind": "sight",
+      "desc": "鹤鸣茶社喝盖碗茶",
+      "facts": []
+    },
+    "wuhou": {
+      "name": "武侯祠",
+      "lat": 30.6478,
+      "lng": 104.0457,
+      "approx": false,
+      "kind": "sight",
+      "desc": "",
+      "facts": [
+        [
+          "门票",
+          "50 元"
+        ],
+        [
+          "开放",
+          "08:00–18:00"
+        ]
+      ]
+    },
+    "jinli": {
+      "name": "锦里",
+      "lat": 30.6487,
+      "lng": 104.0474,
+      "approx": false,
+      "kind": "food",
+      "desc": "小吃一条街，晚饭在这里",
+      "facts": []
+    },
+    "djy": {
+      "name": "都江堰景区",
+      "lat": 31.0034,
+      "lng": 103.6093,
+      "approx": false,
+      "kind": "sight",
+      "desc": "",
+      "facts": [
+        [
+          "门票",
+          "80 元"
+        ],
+        [
+          "游览",
+          "3–4 小时"
+        ]
+      ]
+    },
+    "qingcheng": {
+      "name": "青城山",
+      "lat": 30.9074,
+      "lng": 103.5625,
+      "approx": false,
+      "kind": "backup",
+      "desc": "下雨就不去都江堰，改去前山",
+      "facts": []
+    },
+    "dufu": {
+      "name": "杜甫草堂",
+      "lat": 30.6629,
+      "lng": 104.0262,
+      "approx": false,
+      "kind": "backup",
+      "desc": "",
+      "facts": [
+        [
+          "门票",
+          "50 元"
+        ]
+      ]
+    }
+  },
+  "days": [
+    {
+      "date": "5.1",
+      "weekday": "周五",
+      "title": "飞到成都",
+      "notes": "晚饭在宽窄巷子附近吃。",
+      "stops": [
+        {
+          "place": "sha",
+          "time": "",
+          "end": "13:00",
+          "mode": "flight",
+          "leg": "13:00–16:00 航班 虹桥–天府"
+        },
+        {
+          "place": "tfu",
+          "time": "16:00",
+          "end": "16:40",
+          "mode": "subway",
+          "leg": "16:40–17:40 地铁 18 号线 天府机场–火车南站；17:45–18:05 地铁 1 号线 到天府广场；18:05–18:20 步行"
+        },
+        {
+          "place": "hotel",
+          "time": "18:20",
+          "end": "19:00",
+          "mode": "subway",
+          "leg": "19:00–19:15 地铁 2 号线 春熙路–人民公园；19:15–19:30 步行"
+        },
+        {
+          "place": "kuanzhai",
+          "time": "19:30",
+          "end": "21:30",
+          "mode": "car",
+          "leg": "21:30–21:50 打车"
+        },
+        {
+          "place": "hotel",
+          "time": "21:50",
+          "end": "",
+          "leg": ""
+        }
+      ]
+    },
+    {
+      "date": "5.2",
+      "weekday": "周六",
+      "title": "熊猫和老成都",
+      "notes": "07:00 起床，早饭在酒店。",
+      "stops": [
+        {
+          "place": "hotel",
+          "time": "",
+          "end": "07:30",
+          "mode": "car",
+          "leg": "07:30–08:00 打车"
+        },
+        {
+          "place": "panda",
+          "time": "08:00",
+          "end": "11:00",
+          "mode": "subway",
+          "leg": "11:10–11:45 地铁 3 号线 熊猫大道–红星桥；11:45–12:00 步行"
+        },
+        {
+          "place": "wenshu",
+          "time": "12:00",
+          "end": "13:30",
+          "mode": "subway",
+          "leg": "13:30–13:50 地铁 1 号线 文殊院–天府广场；13:50–14:05 步行"
+        },
+        {
+          "place": "renmin",
+          "time": "14:05",
+          "end": "16:00",
+          "mode": "car",
+          "leg": "16:00–16:20 打车"
+        },
+        {
+          "place": "wuhou",
+          "time": "16:20",
+          "end": "18:00",
+          "mode": "walk",
+          "leg": "18:00–18:05 步行"
+        },
+        {
+          "place": "jinli",
+          "time": "18:05",
+          "end": "20:00",
+          "mode": "subway",
+          "leg": "20:10–20:35 地铁 3 号线 高升桥–春熙路；20:35–20:45 步行"
+        },
+        {
+          "place": "hotel",
+          "time": "20:45",
+          "end": "",
+          "leg": ""
+        }
+      ]
+    },
+    {
+      "date": "5.3",
+      "weekday": "周日",
+      "title": "都江堰和返程",
+      "notes": "退房时带上行李，景区游客中心可以寄存。",
+      "stops": [
+        {
+          "place": "hotel",
+          "time": "",
+          "end": "07:30",
+          "mode": "train",
+          "leg": "07:30–07:50 地铁 1 号线 天府广场–火车北站；08:10–08:50 成灌城际 成都–都江堰；08:50–09:10 打车"
+        },
+        {
+          "place": "djy",
+          "time": "09:10",
+          "end": "13:00",
+          "mode": "train",
+          "leg": "13:00–13:20 打车到都江堰站；13:40–14:20 成灌城际 到成都；14:30–15:40 地铁 1 号线、18 号线 到天府机场"
+        },
+        {
+          "place": "tfu",
+          "time": "15:40",
+          "end": "17:30",
+          "mode": "flight",
+          "leg": "17:30–20:10 航班 天府–虹桥"
+        },
+        {
+          "place": "sha",
+          "time": "20:10",
+          "end": "",
+          "leg": ""
+        }
+      ]
+    }
+  ],
+  "backups": [
+    "qingcheng",
+    "dufu"
+  ]
+}

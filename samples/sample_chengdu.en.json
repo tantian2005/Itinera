@@ -1,0 +1,313 @@
+{
+  "version": 1,
+  "title": "Chengdu in 3 days (sample)",
+  "dateRange": "5.1–5.3",
+  "places": {
+    "sha": {
+      "name": "Shanghai Hongqiao Airport",
+      "lat": 31.1977,
+      "lng": 121.3345,
+      "approx": false,
+      "kind": "transport",
+      "desc": "",
+      "facts": [],
+      "nameLocal": "上海虹桥国际机场"
+    },
+    "tfu": {
+      "name": "Chengdu Tianfu Airport",
+      "lat": 30.3036,
+      "lng": 104.4457,
+      "approx": false,
+      "kind": "transport",
+      "desc": "Terminal 1",
+      "facts": [
+        [
+          "To the city",
+          "Metro line 18, about 1 hour"
+        ]
+      ],
+      "nameLocal": "成都天府国际机场"
+    },
+    "hotel": {
+      "name": "Hotel near Chunxi Road",
+      "lat": 30.656,
+      "lng": 104.0785,
+      "approx": true,
+      "kind": "hotel",
+      "desc": "2 nights (sample stay)",
+      "facts": [
+        [
+          "Stay",
+          "5.1–5.3"
+        ]
+      ]
+    },
+    "kuanzhai": {
+      "name": "Kuanzhai Alley",
+      "lat": 30.6662,
+      "lng": 104.0508,
+      "approx": false,
+      "kind": "sight",
+      "desc": "Best after dark, when the lights are on",
+      "facts": [],
+      "nameLocal": "宽窄巷子"
+    },
+    "panda": {
+      "name": "Chengdu Panda Base",
+      "lat": 30.7432,
+      "lng": 104.1329,
+      "approx": false,
+      "kind": "sight",
+      "desc": "Pandas are most active in the morning, so arrive at opening",
+      "facts": [
+        [
+          "Hours",
+          "07:30–18:00"
+        ],
+        [
+          "Ticket",
+          "55 yuan"
+        ]
+      ],
+      "nameLocal": "成都大熊猫繁育研究基地",
+      "link": "https://www.panda.org.cn"
+    },
+    "wenshu": {
+      "name": "Wenshu Monastery",
+      "lat": 30.6779,
+      "lng": 104.0702,
+      "approx": false,
+      "kind": "sight",
+      "desc": "Vegetarian lunch",
+      "facts": [
+        [
+          "Ticket",
+          "Free"
+        ]
+      ],
+      "nameLocal": "文殊院"
+    },
+    "renmin": {
+      "name": "People's Park",
+      "lat": 30.6597,
+      "lng": 104.0548,
+      "approx": false,
+      "kind": "sight",
+      "desc": "Tea at the Heming teahouse",
+      "facts": [],
+      "nameLocal": "人民公园"
+    },
+    "wuhou": {
+      "name": "Wuhou Shrine",
+      "lat": 30.6478,
+      "lng": 104.0457,
+      "approx": false,
+      "kind": "sight",
+      "desc": "",
+      "facts": [
+        [
+          "Ticket",
+          "50 yuan"
+        ],
+        [
+          "Hours",
+          "08:00–18:00"
+        ]
+      ],
+      "nameLocal": "武侯祠"
+    },
+    "jinli": {
+      "name": "Jinli Street",
+      "lat": 30.6487,
+      "lng": 104.0474,
+      "approx": false,
+      "kind": "food",
+      "desc": "Street food; dinner here",
+      "facts": [],
+      "nameLocal": "锦里"
+    },
+    "djy": {
+      "name": "Dujiangyan Irrigation System",
+      "lat": 31.0034,
+      "lng": 103.6093,
+      "approx": false,
+      "kind": "sight",
+      "desc": "",
+      "facts": [
+        [
+          "Ticket",
+          "80 yuan"
+        ],
+        [
+          "Visit",
+          "3–4 hours"
+        ]
+      ],
+      "nameLocal": "都江堰景区"
+    },
+    "qingcheng": {
+      "name": "Mount Qingcheng",
+      "lat": 30.9074,
+      "lng": 103.5625,
+      "approx": false,
+      "kind": "backup",
+      "desc": "If it rains, go to the front mountain instead of Dujiangyan",
+      "facts": [],
+      "nameLocal": "青城山"
+    },
+    "dufu": {
+      "name": "Du Fu Thatched Cottage",
+      "lat": 30.6629,
+      "lng": 104.0262,
+      "approx": false,
+      "kind": "backup",
+      "desc": "",
+      "facts": [
+        [
+          "Ticket",
+          "50 yuan"
+        ]
+      ],
+      "nameLocal": "杜甫草堂"
+    }
+  },
+  "days": [
+    {
+      "date": "5.1",
+      "weekday": "Fri",
+      "title": "Fly to Chengdu",
+      "notes": "Dinner near Kuanzhai Alley.",
+      "stops": [
+        {
+          "place": "sha",
+          "time": "",
+          "end": "13:00",
+          "mode": "flight",
+          "leg": "13:00–16:00 flight Hongqiao–Tianfu"
+        },
+        {
+          "place": "tfu",
+          "time": "16:00",
+          "end": "16:40",
+          "mode": "subway",
+          "leg": "16:40–17:40 Metro line 18 Tianfu Airport–South Railway Station; 17:45–18:05 Metro line 1 to Tianfu Square; 18:05–18:20 walk"
+        },
+        {
+          "place": "hotel",
+          "time": "18:20",
+          "end": "19:00",
+          "mode": "subway",
+          "leg": "19:00–19:15 Metro line 2 Chunxi Road–People's Park; 19:15–19:30 walk"
+        },
+        {
+          "place": "kuanzhai",
+          "time": "19:30",
+          "end": "21:30",
+          "mode": "car",
+          "leg": "21:30–21:50 taxi"
+        },
+        {
+          "place": "hotel",
+          "time": "21:50",
+          "end": "",
+          "leg": ""
+        }
+      ]
+    },
+    {
+      "date": "5.2",
+      "weekday": "Sat",
+      "title": "Pandas and old Chengdu",
+      "notes": "Up at 07:00, breakfast at the hotel.",
+      "stops": [
+        {
+          "place": "hotel",
+          "time": "",
+          "end": "07:30",
+          "mode": "car",
+          "leg": "07:30–08:00 taxi"
+        },
+        {
+          "place": "panda",
+          "time": "08:00",
+          "end": "11:00",
+          "mode": "subway",
+          "leg": "11:10–11:45 Metro line 3 Panda Avenue–Hongxingqiao; 11:45–12:00 walk"
+        },
+        {
+          "place": "wenshu",
+          "time": "12:00",
+          "end": "13:30",
+          "mode": "subway",
+          "leg": "13:30–13:50 Metro line 1 Wenshu Monastery–Tianfu Square; 13:50–14:05 walk"
+        },
+        {
+          "place": "renmin",
+          "time": "14:05",
+          "end": "16:00",
+          "mode": "car",
+          "leg": "16:00–16:20 taxi"
+        },
+        {
+          "place": "wuhou",
+          "time": "16:20",
+          "end": "18:00",
+          "mode": "walk",
+          "leg": "18:00–18:05 walk"
+        },
+        {
+          "place": "jinli",
+          "time": "18:05",
+          "end": "20:00",
+          "mode": "subway",
+          "leg": "20:10–20:35 Metro line 3 Gaoshengqiao–Chunxi Road; 20:35–20:45 walk"
+        },
+        {
+          "place": "hotel",
+          "time": "20:45",
+          "end": "",
+          "leg": ""
+        }
+      ]
+    },
+    {
+      "date": "5.3",
+      "weekday": "Sun",
+      "title": "Dujiangyan and home",
+      "notes": "Take your luggage when you check out; the visitor centre has a left-luggage room.",
+      "stops": [
+        {
+          "place": "hotel",
+          "time": "",
+          "end": "07:30",
+          "mode": "train",
+          "leg": "07:30–07:50 Metro line 1 Tianfu Square–North Railway Station; 08:10–08:50 intercity train Chengdu–Dujiangyan; 08:50–09:10 taxi"
+        },
+        {
+          "place": "djy",
+          "time": "09:10",
+          "end": "13:00",
+          "mode": "train",
+          "leg": "13:00–13:20 taxi to Dujiangyan station; 13:40–14:20 intercity train to Chengdu; 14:30–15:40 Metro lines 1 and 18 to Tianfu Airport"
+        },
+        {
+          "place": "tfu",
+          "time": "15:40",
+          "end": "17:30",
+          "mode": "flight",
+          "leg": "17:30–20:10 flight Tianfu–Hongqiao"
+        },
+        {
+          "place": "sha",
+          "time": "20:10",
+          "end": "",
+          "leg": ""
+        }
+      ]
+    }
+  ],
+  "backups": [
+    "qingcheng",
+    "dufu"
+  ]
+}

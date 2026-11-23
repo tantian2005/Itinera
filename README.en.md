@@ -14,7 +14,7 @@ There are no accounts and no server. Your trips are kept in your own browser, an
 2. Paste the AI's reply, upload the .json file it made, or drop the file on the page.
 3. Fix what the checks at the top point out, edit and reorder as you like, then share an image or export the JSON.
 
-To see what it looks like first, press **Open sample**.
+To see what it looks like first, open one of the samples on the start page: Kyoto and Osaka, or Chengdu.
 
 ## Features
 
@@ -38,7 +38,8 @@ Some of these can be fixed with one click. For the rest, **Copy notes for the AI
 **Map**
 - Curved routes, with dashed lines for long trips and flights and arrows showing the direction.
 - Street and satellite base maps, your location, a scale bar, and place names next to markers when you zoom in.
-- A search box on the map finds places, and also accepts a Google Maps link or coordinates.
+- A search box on the map finds places, and also accepts coordinates or a link from Google Maps, Amap or Baidu Maps.
+- Mainland China uses WGS-84 coordinates throughout. Links from Amap, Baidu or Google's China map are converted from GCJ-02 or BD-09, and places in China can be opened in Amap.
 - Right-click the map (long-press on a phone) to add a place right there.
 
 **Timeline**
