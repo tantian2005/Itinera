@@ -23,6 +23,7 @@ To see what it looks like first, press **Open sample**.
 - Small format errors are fixed, such as comments, single quotes, missing commas and output that was cut off. The page tells you what it fixed.
 - Field names are matched loosely: case is ignored, and common aliases are accepted, such as `latitude` or `coords`.
 - Coordinates can be written in degrees, for example `51.5089° N`.
+- Places without coordinates are looked up by name and marked approximate; only those that cannot be found are reported.
 - AIs often write the departure time as the arrival time. Arrival and departure times are worked out from the times in the transport notes around each stop.
 
 **Checks**

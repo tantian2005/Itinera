@@ -4,47 +4,46 @@
   "dateRange": "4.10–4.12",
   "places": {
     "hnd": {"name": "Haneda Airport", "nameLocal": "羽田空港", "lat": 35.5494, "lng": 139.7798, "approx": false, "kind": "transport", "desc": "", "facts": []},
-    "kix": {"name": "Kansai International Airport", "nameLocal": "関西国際空港", "lat": 34.432, "lng": 135.2304, "approx": false, "kind": "transport", "desc": "", "facts": [["To Kyoto", "JR Haruka express, about 75 minutes"]]},
-    "kyoto_st": {"name": "Kyoto Station", "nameLocal": "京都駅", "lat": 34.9858, "lng": 135.7588, "approx": false, "kind": "transport", "desc": "", "facts": []},
-    "hotel": {"name": "Hotel near Kyoto Station", "lat": 34.9872, "lng": 135.7605, "approx": true, "kind": "hotel", "desc": "The sample's place to stay. The position is approximate.", "facts": [["Stay", "4.10–4.12, 2 nights"]]},
-    "inari": {"name": "Fushimi Inari Taisha", "nameLocal": "伏見稲荷大社", "lat": 34.9671, "lng": 135.7727, "approx": false, "kind": "sight", "desc": "Thousands of torii gates. Quiet early in the morning.", "facts": [["Hours", "Always open"], ["Entry", "Free"]], "link": "https://inari.jp"},
-    "nishiki": {"name": "Nishiki Market", "nameLocal": "錦市場", "lat": 34.6655, "lng": 135.5066, "approx": false, "kind": "food", "desc": "Street food for lunch.", "facts": [["Hours", "Most stalls 10:00–17:00"]]},
-    "kiyomizu": {"name": "Kiyomizu-dera", "nameLocal": "清水寺", "lat": 34.9949, "lng": 135.785, "approx": false, "kind": "sight", "desc": "The wooden stage. Walk down through Ninenzaka and Sannenzaka.", "facts": [["Entry", "500 yen"]], "link": "https://www.kiyomizudera.or.jp"},
+    "kix": {"name": "Kansai International Airport", "nameLocal": "関西国際空港", "lat": 34.432, "lng": 135.2304, "approx": false, "kind": "transport", "desc": "Buy an ICOCA card in Terminal 1", "facts": [["To Kyoto", "JR Haruka express, about 75 minutes"]]},
+    "hotel": {"name": "Hotel near Kyoto Station", "lat": 34.9872, "lng": 135.7605, "approx": true, "kind": "hotel", "desc": "2 nights, the sample's place to stay", "facts": [["Stay", "4.10–4.12"]]},
+    "inari": {"name": "Fushimi Inari Taisha", "nameLocal": "伏見稲荷大社", "lat": 34.9671, "lng": 135.7727, "approx": false, "kind": "sight", "desc": "Thousands of torii gates, quiet early in the morning", "facts": [["Hours", "Always open"], ["Entry", "Free"]], "link": "https://inari.jp"},
+    "nishiki": {"name": "Nishiki Market", "nameLocal": "錦市場", "lat": 35.005, "lng": 135.7649, "approx": false, "kind": "food", "desc": "Street food for lunch", "facts": [["Hours", "Most stalls 10:00–17:00"]]},
+    "kiyomizu": {"name": "Kiyomizu-dera", "nameLocal": "清水寺", "lat": 34.9949, "lng": 135.785, "approx": false, "kind": "sight", "desc": "The wooden stage", "facts": [["Entry", "500 yen"], ["Hours", "06:00–18:00"]], "link": "https://www.kiyomizudera.or.jp"},
     "yasaka": {"name": "Yasaka Shrine", "nameLocal": "八坂神社", "lat": 35.0037, "lng": 135.7785, "approx": false, "kind": "sight", "desc": "", "facts": []},
-    "gion": {"name": "Hanamikoji, Gion", "nameLocal": "花見小路通", "lat": 35.0025, "lng": 135.7751, "approx": true, "kind": "sight", "desc": "Evening walk, dinner nearby.", "facts": []},
-    "bamboo": {"name": "Arashiyama Bamboo Grove", "nameLocal": "竹林の小径", "lat": 35.017, "lng": 135.6713, "approx": false, "kind": "sight", "desc": "Arrive before 8:00 for the fewest people.", "facts": []},
+    "gion": {"name": "Hanamikoji, Gion", "nameLocal": "花見小路通", "lat": 35.0025, "lng": 135.7751, "approx": true, "kind": "sight", "desc": "Evening walk, dinner nearby", "facts": []},
+    "bamboo": {"name": "Arashiyama Bamboo Grove", "nameLocal": "竹林の小径", "lat": 35.017, "lng": 135.6713, "approx": false, "kind": "sight", "desc": "Fewest people before 8:00", "facts": []},
     "togetsukyo": {"name": "Togetsukyo Bridge", "nameLocal": "渡月橋", "lat": 35.0129, "lng": 135.6778, "approx": false, "kind": "sight", "desc": "", "facts": []},
-    "osaka_castle": {"name": "Osaka Castle", "nameLocal": "大阪城", "lat": 34.6873, "lng": 135.5262, "approx": false, "kind": "sight", "desc": "The main tower is a museum.", "facts": [["Entry", "600 yen"], ["Hours", "09:00–17:00"]]},
-    "dotonbori": {"name": "Dotonbori", "nameLocal": "道頓堀", "lat": 34.6687, "lng": 135.5013, "approx": false, "kind": "food", "desc": "Takoyaki and okonomiyaki.", "facts": []},
-    "nara": {"name": "Nara Park", "nameLocal": "奈良公園", "lat": 34.6851, "lng": 135.843, "approx": false, "kind": "backup", "desc": "Half-day option for rain or spare time.", "facts": []},
-    "kinkakuji": {"name": "Kinkaku-ji", "nameLocal": "金閣寺", "lat": 35.0394, "lng": 135.7292, "approx": false, "kind": "backup", "desc": "", "facts": []}
+    "osaka_castle": {"name": "Osaka Castle", "nameLocal": "大阪城", "lat": 34.6873, "lng": 135.5262, "approx": false, "kind": "sight", "desc": "The main tower is a museum", "facts": [["Entry", "1200 yen"], ["Hours", "09:00–17:00"]], "link": "https://www.osakacastle.net"},
+    "dotonbori": {"name": "Dotonbori", "nameLocal": "道頓堀", "lat": 34.6687, "lng": 135.5013, "approx": false, "kind": "food", "desc": "Takoyaki and okonomiyaki", "facts": []},
+    "nara": {"name": "Nara Park", "nameLocal": "奈良公園", "lat": 34.6851, "lng": 135.843, "approx": false, "kind": "backup", "desc": "Half-day option for rain or spare time", "facts": []},
+    "kinkakuji": {"name": "Kinkaku-ji", "nameLocal": "金閣寺", "lat": 35.0394, "lng": 135.7292, "approx": false, "kind": "backup", "desc": "", "facts": [["Entry", "500 yen"]]}
   },
   "days": [
     {"date": "4.10", "weekday": "Fri", "title": "Fly to Kansai", "notes": "Dinner near Kyoto Station.",
      "stops": [
-      {"place": "hnd", "time": "15:30", "leg": "Flight to Kansai 15:30–16:45"},
-      {"place": "kix", "time": "16:45", "leg": "JR Haruka 17:15–18:30"},
-      {"place": "kyoto_st", "time": "18:30", "leg": "5 min walk"},
-      {"place": "hotel", "time": "18:40", "leg": ""}
+      {"place": "hnd", "time": "", "end": "15:30", "mode": "flight", "leg": "15:30–16:45 flight Haneda–Kansai"},
+      {"place": "kix", "time": "16:45", "end": "17:15", "mode": "train", "leg": "17:15–18:30 JR Haruka express to Kyoto Station; 18:30–18:40 walk"},
+      {"place": "hotel", "time": "18:40", "end": "", "leg": ""}
     ]},
-    {"date": "4.11", "weekday": "Sat", "title": "A day in Higashiyama", "notes": "Up at 07:00. In this sample, Nishiki Market is placed in Osaka on purpose to show the warning.",
+    {"date": "4.11", "weekday": "Sat", "title": "A day in Higashiyama", "notes": "Up at 06:45, breakfast from a convenience store.",
      "stops": [
-      {"place": "hotel", "time": "07:30", "leg": "JR Nara Line, 2 stops"},
-      {"place": "inari", "time": "08:00", "leg": "Keihan line to Gion-Shijo"},
-      {"place": "nishiki", "time": "11:30", "leg": "Bus, about 15 min"},
-      {"place": "kiyomizu", "time": "13:30", "leg": "Walk through Ninenzaka"},
-      {"place": "yasaka", "time": "16:00", "leg": "5 min walk"},
-      {"place": "gion", "time": "17:00", "leg": "Bus to Kyoto Station"},
-      {"place": "hotel", "time": "20:30", "leg": ""}
+      {"place": "hotel", "time": "", "end": "07:30", "mode": "train", "leg": "07:30–07:40 JR Nara Line Kyoto–Inari"},
+      {"place": "inari", "time": "07:45", "end": "09:45", "mode": "train", "leg": "09:50–10:05 Keihan Line Fushimi-Inari–Gion-Shijo; 10:05–10:15 walk"},
+      {"place": "nishiki", "time": "10:15", "end": "11:45", "mode": "walk", "leg": "11:45–12:15 walk along Shijo-dori"},
+      {"place": "kiyomizu", "time": "12:15", "end": "14:30", "mode": "walk", "leg": "14:30–15:00 walk down through Ninenzaka and Sannenzaka"},
+      {"place": "yasaka", "time": "15:00", "end": "15:40", "mode": "walk", "leg": "15:40–15:50 walk"},
+      {"place": "gion", "time": "15:50", "end": "18:40", "mode": "bus", "leg": "18:40–19:05 bus 206 to Kyoto Station"},
+      {"place": "hotel", "time": "19:10", "end": "", "leg": ""}
     ]},
-    {"date": "4.12", "weekday": "Sun", "title": "Arashiyama and Osaka", "notes": "After checking out, leave luggage at Kyoto Station or take it to Osaka.",
+    {"date": "4.12", "weekday": "Sun", "title": "Arashiyama and Osaka", "notes": "At check-out, send the suitcase straight to Kansai Airport with a luggage delivery service.",
      "stops": [
-      {"place": "hotel", "time": "07:00", "leg": "JR Sagano Line to Saga-Arashiyama"},
-      {"place": "bamboo", "time": "07:40", "leg": "10 min walk"},
-      {"place": "togetsukyo", "time": "09:30", "leg": "JR to Osaka, about 1 hour"},
-      {"place": "osaka_castle", "time": "12:30", "leg": "Subway to Namba"},
-      {"place": "dotonbori", "time": "15:30", "leg": "Nankai Rapi:t to the airport"},
-      {"place": "kix", "time": "18:30", "leg": "Flight home at 20:30"}
+      {"place": "hotel", "time": "", "end": "06:50", "mode": "train", "leg": "06:50–07:05 JR Sagano Line Kyoto–Saga-Arashiyama; 07:05–07:20 walk"},
+      {"place": "bamboo", "time": "07:20", "end": "08:30", "mode": "walk", "leg": "08:30–08:40 walk"},
+      {"place": "togetsukyo", "time": "08:40", "end": "09:40", "mode": "train", "leg": "09:50–10:05 JR Saga-Arashiyama–Kyoto; 10:15–10:45 JR Special Rapid Kyoto–Osaka; 10:50–11:05 metro to Morinomiya"},
+      {"place": "osaka_castle", "time": "11:10", "end": "13:30", "mode": "subway", "leg": "13:40–14:00 metro to Namba"},
+      {"place": "dotonbori", "time": "14:00", "end": "17:30", "mode": "train", "leg": "17:45–18:25 Nankai Rapi:t Namba–Kansai Airport"},
+      {"place": "kix", "time": "18:25", "end": "20:30", "mode": "flight", "leg": "20:30–21:45 flight Kansai–Haneda"},
+      {"place": "hnd", "time": "21:45", "end": "", "leg": ""}
     ]}
   ],
   "backups": ["nara", "kinkakuji"]

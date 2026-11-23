@@ -97,6 +97,23 @@ button,input,select,textarea{font:inherit;color:inherit}
 .trip b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .trip small{color:var(--muted);font-size:12.5px}
 .empty{color:var(--muted);margin:0}
+h1.brand{margin:0;font-size:22px}
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:20px}
+.flow>li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start}
+.flow .n{width:28px;height:28px;border-radius:50%;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);font:700 15px/28px var(--font-sign);text-align:center}
+.flow .fb{min-width:0}
+.flow .fb.row{padding-top:0}
+.flow .row{min-height:28px}
+.flabel{display:block;font-weight:600;line-height:28px}
+.flow .paste{margin:6px 0 8px}
+.flow .pv{margin-top:6px}
+.h-side .hh{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.h-side .hh h2{margin:0}
+/* info icon with a tooltip, shown on hover, focus or tap */
+.info{appearance:none;position:relative;flex:none;width:20px;height:20px;padding:0;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--muted);font:italic 700 12px/1 Georgia,"Times New Roman",serif;cursor:help;display:inline-grid;place-items:center}
+.info:hover,.info:focus-visible{color:var(--accent);border-color:var(--accent)}
+.info::after{content:attr(data-tip);position:absolute;z-index:30;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);width:max-content;max-width:240px;padding:6px 10px;border-radius:7px;background:var(--ink);color:var(--panel);font:400 12.5px/1.45 var(--font-ui);text-align:left;opacity:0;pointer-events:none;transition:opacity .15s}
+.info:hover::after,.info:focus::after{opacity:1}
 .ver{text-align:center}
 .ver a{color:var(--muted)}
 .dropzone{position:fixed;inset:0;z-index:5000;background:color-mix(in srgb,var(--accent) 22%,transparent);display:flex;align-items:center;justify-content:center;pointer-events:none}
@@ -136,7 +153,8 @@ body.resizing,body.resizing *{cursor:col-resize!important;user-select:none!impor
 .chip .dot{width:9px;height:9px;border-radius:50%;background:var(--c,var(--muted))}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--panel);border-color:var(--ink)}
 .scroll{overflow-y:auto;min-height:0;flex:1;padding-bottom:max(18px,env(safe-area-inset-bottom))}
-.day{padding:14px 18px 8px max(18px,env(safe-area-inset-left));border-bottom:1px solid var(--line)}
+.day{padding:0 18px 8px max(18px,env(safe-area-inset-left));border-bottom:1px solid var(--line);background:var(--panel)}
+.day-h{position:sticky;top:0;z-index:3;background:inherit;padding:14px 0 6px}
 .day-h{display:flex;align-items:center;gap:10px}
 .day-h .hit{all:unset;display:flex;align-items:center;gap:10px;flex:1;min-width:0;cursor:pointer;border-radius:8px}
 .badge{flex:none;width:46px;height:46px;border-radius:8px;background:var(--c);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-sign);line-height:1}
@@ -167,7 +185,13 @@ body.resizing,body.resizing *{cursor:col-resize!important;user-select:none!impor
 .stop:first-child .st-node::before{top:50%}
 .stop:last-child .st-node::before{bottom:50%}
 .stop:only-child .st-node::before{display:none}
-.st-node i{position:relative;width:14px;height:14px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px var(--panel)}
+.st-node i{position:relative;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px var(--panel);font:700 12px/1 var(--font-sign);font-style:normal;color:var(--panel)}
+.st-node i.transport,.st-node i.hotel{width:14px;height:14px}
+.st-node i.approx{color:var(--c)}
+.st-time b.clash{color:var(--danger);text-decoration:underline wavy;text-underline-offset:3px}
+.st-dur{color:var(--ink);font-weight:600}
+.st-sub .st-dur:not(:last-child)::after{content:"";display:inline-block;width:1px;height:10px;background:var(--line);margin:0 7px;vertical-align:-1px}
+.leg-dist i{display:inline-block;width:1px;height:10px;background:var(--line);margin:0 7px;vertical-align:-1px}
 .st-node i.transport{background:var(--panel);border:3px solid var(--c)}
 .st-node i.hotel{border-radius:4px;background:var(--panel);border:2.5px solid var(--c)}
 .st-node i.approx{background:var(--panel);border:2px dashed var(--c)}
@@ -518,38 +542,35 @@ textarea.qi.notes-ed{display:block;width:100%;margin:10px 0 2px;padding:8px 11px
 <div id="home" class="home">
   <div class="h-wrap">
     <div class="brandrow">
-      <div class="brand">
+      <h1 class="brand">
         <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M8 23c4-1 4-8 8-9s5 4 8-5" fill="none" stroke="var(--accent-ink)" stroke-width="2.6" stroke-linecap="round"/><circle cx="8" cy="23" r="2.6" fill="var(--accent-ink)"/><circle cx="24" cy="9" r="2.6" fill="var(--accent-ink)"/></svg>
         <span data-t="路书|Itinera"></span>
-      </div>
+      </h1>
       <button type="button" class="langbtn" data-tt="切换语言|Switch language"></button>
     </div>
     <div class="h-grid">
-      <section class="card h-import" aria-labelledby="h-title">
-        <div class="eyebrow" data-t="攻略 → JSON → 地图|Guide → JSON → Map"></div>
-        <h1 id="h-title" data-t="把旅行攻略变成可以修改的行程地图|Turn a travel guide into a map you can edit"></h1>
-        <ol class="steps">
-          <li><span data-th="<b>复制提示词</b>，和攻略一起发给 ChatGPT、Claude 或其他 AI。|<b>Copy the prompt</b> and send it to ChatGPT, Claude or another AI together with your guide."></span></li>
-          <li><span data-th="<b>粘贴</b>它回复的内容，或者上传它生成的 .json 文件。|<b>Paste</b> its reply, or upload the .json file it made."></span></li>
-          <li><span data-th="<b>生成地图</b>后可以拖动地点修正位置、直接修改每天的安排，再导出 JSON。|<b>Make the map</b>, then drag places to fix their position, edit each day in place and export the JSON."></span></li>
+      <section class="card h-import" data-tal="导入行程|Import a trip" aria-label="">
+        <ol class="flow">
+          <li><span class="n">1</span><div class="fb">
+            <div class="row"><button type="button" class="btn" id="copyPrompt"><svg class="ico" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></svg><span data-t="复制提示词|Copy prompt"></span></button><button type="button" class="info" data-ttip="把提示词和攻略一起发给 ChatGPT、Claude 或其他 AI|Send the prompt with your guide to ChatGPT, Claude or another AI">i</button></div>
+            <details class="pv"><summary data-t="查看提示词|Show prompt"></summary><pre id="promptPre"></pre></details>
+          </div></li>
+          <li><span class="n">2</span><div class="fb">
+            <label for="paste" class="flabel" data-t="粘贴 AI 的回复|Paste the AI's reply"></label>
+            <textarea id="paste" class="paste" spellcheck="false"></textarea>
+            <div class="row"><label class="btn ghost sm" for="file"><svg class="ico" viewBox="0 0 24 24"><path d="M12 15V4M7 9l5-5 5 5M5 20h14"/></svg><span data-t="上传 .json|Upload .json"></span></label><button type="button" class="info" data-ttip="也可以把 .json 文件拖到页面上|You can also drop a .json file on the page">i</button></div>
+            <input type="file" id="file" accept=".json,.txt,.md,application/json,text/plain" hidden>
+            <div id="errs" hidden></div>
+          </div></li>
+          <li><span class="n">3</span><div class="fb row">
+            <button type="button" class="btn primary" id="go" data-t="生成地图|Make map"></button>
+            <button type="button" class="btn ghost" id="demo" data-t="打开示例|Open sample"></button>
+          </div></li>
         </ol>
-        <div class="row">
-          <button type="button" class="btn" id="copyPrompt"><svg class="ico" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></svg><span data-t="复制提示词|Copy prompt"></span></button>
-        </div>
-        <details class="pv"><summary data-t="查看提示词|Show prompt"></summary><pre id="promptPre"></pre></details>
-        <textarea id="paste" class="paste" spellcheck="false" data-tal="粘贴 JSON|Paste JSON"></textarea>
-        <div id="errs" hidden></div>
-        <div class="row">
-          <button type="button" class="btn primary" id="go" data-t="生成地图|Make map"></button>
-          <label class="btn" for="file"><svg class="ico" viewBox="0 0 24 24"><path d="M12 15V4M7 9l5-5 5 5M5 20h14"/></svg><span data-t="上传 .json|Upload .json"></span></label>
-          <input type="file" id="file" accept=".json,.txt,.md,application/json,text/plain" hidden>
-          <button type="button" class="btn ghost" id="demo" data-t="打开示例|Open sample"></button>
-        </div>
-        <p class="fine" data-t="也可以把文件拖到页面上。行程只保存在这个浏览器里，不会上传。|You can also drop a file on the page. Trips are kept in this browser only and never uploaded."></p>
       </section>
       <div class="h-side">
         <section class="card" aria-labelledby="saved-h">
-          <h2 id="saved-h" data-t="我的行程|My trips"></h2>
+          <div class="hh"><h2 id="saved-h" data-t="我的行程|My trips"></h2><button type="button" class="info" data-ttip="行程只保存在这个浏览器里，不会上传|Trips stay in this browser and are never uploaded">i</button></div>
           <ul class="trips" id="trips"></ul>
         </section>
         <p class="fine ver"><span data-t="路书 Itinera|Itinera"></span> <span id="ver"></span>　<a href="https://github.com/tantian2005/Itinera" target="_blank" rel="noopener">GitHub</a></p>
@@ -593,7 +614,7 @@ textarea.qi.notes-ed{display:block;width:100%;margin:10px 0 2px;padding:8px 11px
     <div class="pick-hint" id="pickHint" hidden><span data-t="点击地图上的位置|Click a spot on the map"></span><button type="button" id="pickCancel" data-t="取消|Cancel"></button></div>
     <div class="legend glass" id="legend">
       <button type="button" class="xbtn lx" id="lgx" data-tt="关闭图例|Close legend">✕</button>
-      <span><i class="lg s"></i><span data-t="景点和餐厅，数字是第几天|Sights and food, number is the day"></span></span>
+      <span><i class="lg s"></i><span data-t="景点和餐厅，数字是当天第几站|Sights and food, numbered in order"></span></span>
       <span><i class="lg t"></i><span data-t="交通|Transport"></span></span>
       <span><i class="lg h"></i><span data-t="住宿|Stay"></span></span>
       <span><i class="lg a"></i><span data-t="大致位置|Approximate"></span></span>
@@ -601,7 +622,7 @@ textarea.qi.notes-ed{display:block;width:100%;margin:10px 0 2px;padding:8px 11px
       <span><i class="lg w"></i><span data-t="需要检查|Check this"></span></span>
       <span><i class="lg r"></i><span data-t="长途或航班|Long trip or flight"></span></span>
     </div>
-    <div class="drag-hint" id="dragHint" hidden data-t="拖动地图上的地点调整位置，完成后再点一次「移动地点」|Drag places on the map, then press Move places again to finish"></div>
+    <div class="drag-hint" id="dragHint" hidden data-t="拖动标记调整位置|Drag a marker to move it"></div>
     <div class="tbar glass" id="tbar" role="toolbar"><button type="button" id="undo" data-tt="撤销（Ctrl+Z）|Undo (Ctrl+Z)" disabled><svg class="ico" viewBox="0 0 24 24"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg><span class="l" data-t="撤销|Undo"></span><span class="s" data-t="撤销|Undo"></span></button><button type="button" id="redo" data-tt="重做（Ctrl+Shift+Z）|Redo (Ctrl+Shift+Z)" disabled><svg class="ico" viewBox="0 0 24 24"><path d="M15 14l5-5-5-5"/><path d="M20 9H10a6 6 0 0 0 0 12h3"/></svg><span class="l" data-t="重做|Redo"></span><span class="s" data-t="重做|Redo"></span></button><span class="tsep"></span><button type="button" id="pick" data-tt="点击地图添加地点|Click the map to add a place" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24"><path d="M12 21.5s-6.5-6-6.5-11.5a6.5 6.5 0 0 1 13 0c0 5.5-6.5 11.5-6.5 11.5z"/><path d="M12 7v6M9 10h6"/></svg><span class="l" data-t="添加地点|Add place"></span><span class="s" data-t="添加|Add"></span></button><button type="button" id="moveBtn" data-tt="拖动地图上的地点调整位置|Drag places on the map" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3"/></svg><span class="l" data-t="移动地点|Move places"></span><span class="s" data-t="移动|Move"></span></button><span class="tsep"></span><button type="button" id="shareBtn" data-tt="生成图片发给朋友|Make an image to send to friends" ><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg><span class="l" data-t="分享图片|Share image"></span><span class="s" data-t="分享|Share"></span></button><button type="button" id="exportBtn" data-tt="导出 JSON|Export JSON" aria-haspopup="menu"><svg class="ico" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span class="l" data-t="导出|Export"></span><span class="s" data-t="导出|Export"></span></button></div>
   </div>
 </div>
@@ -635,10 +656,10 @@ textarea.qi.notes-ed{display:block;width:100%;margin:10px 0 2px;padding:8px 11px
  "backups":[]}
 
 要求：
-1. 只用攻略里的信息。没有的留空 ""，不要编造时间、地点或坐标。
+1. 行程只用攻略里的信息：攻略没写的时间、地点和交通留空 ""，不要编造。
 2. places 是地点表，id 用简短的英文。同一个地方只建一次，days 里用 id 引用。
 3. kind 只能是 sight（景点、购物）、food（有具体店名的餐厅）、hotel（住处）、transport（车站、机场、码头）、backup（备选）。
-4. lat、lng 用十进制，尽量对准具体的建筑或入口；拿不准就写 approx:true。
+4. 每个地点都必须有 lat、lng，用十进制数字。攻略里一般没有坐标，请按你对这个地点的了解填写，尽量对准具体的建筑或入口；拿不准就填大概的位置并写 approx:true。不要留空，不要写 0、null 或文字。
 5. 每天的 stops 按时间顺序，写出这一天实际去的每个地方：
    - 每天从出发的地方开始（通常是住处），到结束的地方为止（通常是住处，最后一天是离开的机场或车站）。
    - 第一天从出发的城市、车站或机场开始，路上经过的机场也要列出来。
@@ -650,7 +671,7 @@ textarea.qi.notes-ed{display:block;width:100%;margin:10px 0 2px;padding:8px 11px
 9. 每天写一个简短的 title，例如"七姊妹崖徒步"。
 10. 备选地点的 kind 写 backup，并把 id 放进 backups。
 
-输出前逐条检查：每天是否从住处出发并回到住处；攻略里的每一段交通是否都在某个 leg 里；有没有重复的交通；坐标是否在对应的城市。
+输出前逐条检查：每个地点是否都有数字坐标；每天是否从住处出发并回到住处；攻略里的每一段交通是否都在某个 leg 里；有没有重复的交通；坐标是否在对应的城市。
 
 攻略：
 </script>
@@ -679,10 +700,10 @@ Follow this two-day example:
  "backups":[]}
 
 Requirements:
-1. Use only information from the guide. Leave anything missing as "". Do not invent times, places or coordinates.
+1. Take the plan only from the guide: leave times, places and transport the guide does not give as "". Do not invent them.
 2. places is the list of places with short English ids. Create each place once and refer to it by id in days.
 3. kind must be sight (sights, shopping), food (a named restaurant or cafe), hotel (where you sleep), transport (stations, airports, piers) or backup (alternatives).
-4. lat and lng are decimal degrees, as close to the actual building or entrance as you can. If you are not sure, set approx:true.
+4. Every place must have lat and lng as decimal numbers. Guides rarely give coordinates, so fill them in from what you know about the place, as close to the building or entrance as you can. If you are not sure, give an approximate position and set approx:true. Never leave them empty, and never write 0, null or text.
 5. Each day's stops are in time order and list every place actually visited that day:
    - Start where the day starts (usually the hotel) and end where it ends (usually the hotel; on the last day, the airport or station you leave from).
    - On the first day, start at the city, station or airport you leave from, and list the airports on the way.
@@ -694,7 +715,7 @@ Requirements:
 9. Give every day a short title, such as "Seven Sisters hike".
 10. Backup places have kind backup and their ids go into backups.
 
-Before you answer, check each point: does every day start from and return to where you sleep; is every journey in the guide in some leg; is any leg written twice; are the coordinates in the right city.
+Before you answer, check each point: does every place have numeric coordinates; does every day start from and return to where you sleep; is every journey in the guide in some leg; is any leg written twice; are the coordinates in the right city.
 
 Guide:
 </script>
@@ -702,7 +723,7 @@ Guide:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script>
 'use strict';
-const VERSION='0.1.0';
+const VERSION='0.2.0';
 /* ================= helpers ================= */
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -731,6 +752,7 @@ function applyI18n(){
   $$('[data-tt]').forEach(el=>{const v=tr(...two(el.dataset.tt));el.title=v;el.setAttribute('aria-label',v);});
   $$('[data-tph]').forEach(el=>{el.placeholder=tr(...two(el.dataset.tph));});
   $$('[data-tal]').forEach(el=>{el.setAttribute('aria-label',tr(...two(el.dataset.tal)));});
+  $$('[data-ttip]').forEach(el=>{const v=tr(...two(el.dataset.ttip));el.dataset.tip=v;el.setAttribute('aria-label',v);});
   $$('.langbtn').forEach(b=>b.textContent=lang==='en'?'中文':'EN');
   $('#promptPre').textContent=PROMPT();
   $('#side').setAttribute('aria-label',tr('行程和地点','Itinerary and places'));
@@ -978,8 +1000,12 @@ function normalize(raw){
   const bad=new Set();
   const addPlace=(id,p)=>{
     const name=str(pick(p,A.pname))||id, where=tr(`地点「${name}」（${id}）`,`Place "${name}" (${id})`);
-    const c=coordsFrom(p);
-    if(!c){E.push(tr(`${where}缺少经纬度，或者经纬度不是数字。`,`${where} has no coordinates, or they are not numbers.`));bad.add(id);return false;}
+    let c=coordsFrom(p);
+    if(c&&c[0]===0&&c[1]===0)c=null;
+    if(!c){
+      const kd0=kindOf(pick(p,A.kind));
+      t.places[id]={name,nameLocal:str(pick(p,A.plocal)),lat:null,lng:null,approx:true,kind:kd0.k,desc:str(pick(p,A.desc)),facts:factsFrom(pick(p,A.facts)),link:str(pick(p,A.link))};
+      return true;}
     let [lat,lng]=c;
     if(Math.abs(lat)>90&&Math.abs(lng)<=90){[lat,lng]=[lng,lat];W.push(tr(`${where}的经纬度写反了，已经对调。`,`${where} had latitude and longitude swapped. They were switched back.`));}
     if(Math.abs(lat)>90||Math.abs(lng)>180){E.push(tr(`${where}的坐标 ${lat}, ${lng} 超出范围。`,`${where} has coordinates ${lat}, ${lng}, which are out of range.`));bad.add(id);return false;}
@@ -1117,7 +1143,7 @@ function renderTrips(){
     const when=new Date(e.updated).toLocaleDateString(lang==='en'?'en-GB':'zh-CN',{month:'short',day:'numeric'});
     const meta=[t.dateRange,tr(`${t.days.length} 天`,`${t.days.length} days`),tr(`${np} 个地点`,`${np} places`),tr(`${when}修改`,`edited ${when}`)].filter(Boolean).join(tr('，',', '));
     return `<li class="trip" data-id="${esc(e.id)}" tabindex="0" role="button"><div class="tt"><b>${esc(t.title)}</b><small>${esc(meta)}</small></div><button type="button" class="btn sm ghost danger" data-del="${esc(e.id)}">${tr('删除','Delete')}</button></li>`;
-  }).join(''):`<li class="empty">${tr('还没有行程。导入一份 JSON，或者先打开示例看看。','No trips yet. Import a JSON file, or open the sample first.')}</li>`;
+  }).join(''):`<li class="empty">${tr('还没有行程','No trips yet')}</li>`;
 }
 $('#trips').addEventListener('click',e=>{
   const del=e.target.closest('[data-del]');
@@ -1131,17 +1157,57 @@ $('#trips').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.
 function showErrors(list,pending){
   const box=$('#errs');box.className='errs';box.hidden=false;
   box.innerHTML=`<h3>${pending?tr(`有 ${list.length} 处问题`,`${list.length} problem${list.length>1?'s':''} found`):tr('无法读取','Could not read this')}</h3><ul>${list.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`+
-    (pending?`<div class="row"><button type="button" class="btn primary sm" id="skipGo">${tr('跳过这些项目，打开地图','Skip these and open the map')}</button><span class="fine" style="margin:0">${tr('也可以把问题告诉 AI，让它重新生成。','You can also give these problems to the AI and ask it to try again.')}</span></div>`:'');
+    (pending?`<div class="row"><button type="button" class="btn primary sm" id="skipGo">${tr('跳过这些项目，打开地图','Skip these and open the map')}</button></div>`:'');
   if(pending)$('#skipGo').onclick=()=>{box.hidden=true;createTrip(pending.t,pending.W);};
   box.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
-function importText(text,source){
+/* AIs sometimes leave out coordinates. Look those places up by name near the rest of the trip. */
+let nomQ=Promise.resolve();
+function nomSearch(q,c){
+  const run=async()=>{const w=Math.max(0,1100-(Date.now()-lastNom));if(w)await new Promise(r=>setTimeout(r,w));lastNom=Date.now();
+    const vb=c?`&viewbox=${c.lng-1.5},${c.lat+1.5},${c.lng+1.5},${c.lat-1.5}`:'';
+    const r=await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&accept-language=${lang==='en'?'en':'zh-CN,zh,en'}&q=${encodeURIComponent(q)}${vb}`);
+    return (await r.json()).map(x=>({lat:+x.lat,lng:+x.lon}));};
+  const pr=nomQ.then(run,run);nomQ=pr.catch(()=>{});return pr;
+}
+async function geocodeMissing(t,ids,onProg){
+  const known=Object.values(t.places).filter(p=>p.lat!=null);
+  let c=known.length?{lat:median(known.map(p=>p.lat)),lng:median(known.map(p=>p.lng))}:null;
+  if(!c){const city=t.title.replace(/[（(].*?[)）]/g,'').replace(/\d+\s*(日|天|晚|days?|nights?)|in\s+\d+.*$/ig,'').trim();
+    if(city)try{const j=await (await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(city)}&limit=1`)).json();if(j.features[0]){const f=fromPhoton(j.features[0]);c={lat:f.lat,lng:f.lng};}}catch(e){}}
+  const pickNear=list=>{if(!list.length)return null;if(!c)return list[0];return list.find(x=>km(c,x)<=400)||null;};
+  let done=0,ok=0;const queue=[...ids];
+  async function one(id){
+    const p=t.places[id],qs=[...new Set([p.nameLocal,p.name].filter(Boolean))];let hit=null;
+    for(const q of qs){try{const j=await (await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(q)}&limit=6${c?`&lat=${c.lat.toFixed(4)}&lon=${c.lng.toFixed(4)}`:''}${photonLang()}`)).json();hit=pickNear(j.features.map(fromPhoton));}catch(e){}if(hit)break;}
+    if(!hit)for(const q of qs){try{hit=pickNear(await nomSearch(q,c));}catch(e){}if(hit)break;}
+    if(hit){p.lat=+hit.lat.toFixed(6);p.lng=+hit.lng.toFixed(6);p.approx=true;ok++;}
+    onProg(++done);
+  }
+  await Promise.all([0,1,2].map(async()=>{while(queue.length)await one(queue.shift());}));
+  return ok;
+}
+let importing=false;
+async function importText(text,source){
+  if(importing)return;
   $('#errs').hidden=true;
   let r,notes=[];
   const back=()=>{if(!$('#app').hidden)showHome();if(source==='file')$('#paste').value=String(text).slice(0,200000);};
   try{const x=extractJSON(text);notes=x.notes;r=normalize(x.o);}
   catch(e){back();showErrors([e.message]);return;}
   if(notes.length)r.W.unshift(tr('JSON 有格式问题，已自动修复：','The JSON had format problems that were fixed: ')+notes.map(k=>tr(...NOTE_TEXT[k])).join(tr('，',', '))+tr('。','.'));
+  const miss=Object.keys(r.t.places).filter(id=>r.t.places[id].lat==null);
+  if(miss.length){
+    importing=true;$('#go').disabled=true;
+    const say=n=>toast(tr(`有 ${miss.length} 个地点没有坐标，正在按名称查找（${n}/${miss.length}）…`,`${miss.length} place${miss.length>1?'s have':' has'} no coordinates. Looking them up by name (${n}/${miss.length})…`));
+    say(0);
+    let found=0;try{found=await geocodeMissing(r.t,miss,say);}finally{importing=false;$('#go').disabled=false;}
+    const lost=miss.filter(id=>r.t.places[id].lat==null);
+    lost.forEach(id=>{const nm=r.t.places[id].name;delete r.t.places[id];
+      r.t.days.forEach(d=>{d.stops=d.stops.filter(x=>x.place!==id);});r.t.backups=r.t.backups.filter(x=>x!==id);
+      r.E.push(tr(`地点「${nm}」（${id}）没有坐标，按名称也没有找到。引用它的站会被跳过。`,`Place "${nm}" (${id}) has no coordinates and could not be found by name. Stops that use it will be skipped.`));});
+    if(found)r.W.unshift(tr(`${found} 个地点没有坐标，已按名称自动查到并标为大致位置，请在地图上核对。`,`${found} place${found>1?'s':''} had no coordinates and ${found>1?'were':'was'} looked up by name. They are marked approximate, so check them on the map.`));
+  }
   if(r.E.length){back();showErrors(r.E,r);return;}
   createTrip(r.t,r.W,source==='demo');
 }
@@ -1294,19 +1360,25 @@ function legPartHTML(x){
   if(one)return `<b>${normTime(one[1])}</b><span>${esc(x.slice(one[0].length))}</span>`;
   return `<span>${esc(x)}</span>`;
 }
+const fmtDur=m=>{const h=Math.floor(m/60),mi=m%60;return tr(`${h?h+' 小时':''}${h&&mi?' ':''}${mi?mi+' 分钟':''}`,`${h?h+' h':''}${h&&mi?' ':''}${mi?mi+' min':''}`);};
+/* the number matches the marker on the map: the stop's place in its day */
+const nodeNum=(d,s,p)=>p.kind==='hotel'||p.kind==='transport'?'':String(d.stops.findIndex(x=>x.place===s.place)+1);
 function stopRow(d,di,s,i){
   const p=T.places[s.place],nx=d.stops[i+1],q=nx&&T.places[nx.place];
   const warn=flags.has(di+':'+i);
   const pc=p.kind==='hotel'?'hotel':p.kind==='transport'?'transport':p.approx?'approx':'';
   const sub=p.desc||p.nameLocal||kindName(p.kind);
-  const time=s.time?`<b>${esc(s.time)}</b>${s.end?`<small>–${esc(s.end)}</small>`:''}`:s.end?`<small>${tr('出发','Leave')}</small><b>${esc(s.end)}</b>`:'';
+  const prev=d.stops[i-1],pt=prev&&(prev.end||prev.time),raw=mins(s.time)!=null&&mins(pt)!=null?mins(s.time)-mins(pt):null;
+  const clash=raw!=null&&raw<0&&raw>-360?` class="clash" title="${tr('到达时间早于上一站的离开时间','Arrives before the previous stop is left')}"`:'';
+  const time=s.time?`<b${clash}>${esc(s.time)}</b>${s.end?`<small>–${esc(s.end)}</small>`:''}`:s.end?`<small>${tr('出发','Leave')}</small><b>${esc(s.end)}</b>`:'';
+  const stay=s.time&&s.end?dur(s.time,s.end):null;
   let leg='';
   if(nx){
     const info=legInfo(d,i)||{dk:0,items:[],long:false},dk=info.dk,long=info.long,hasText=info.items.some(x=>x.text);
-    const chips=info.items.map(it=>`<span class="leg-chip">${MODE_ICON[it.mode]}${it.text?legPartHTML(it.text):`<span>${[modeName(it.mode),dk>=.05?fmtKm(dk):''].filter(Boolean).join(' ')}</span>`}</span>`).join('')+(hasText&&dk>=.05?`<em class="leg-dist">${tr('直线距离','Straight line')} ${fmtKm(dk)}</em>`:'');
+    const chips=info.items.map(it=>`<span class="leg-chip">${MODE_ICON[it.mode]}${it.text?legPartHTML(it.text):`<span>${[modeName(it.mode),dk>=.05?fmtKm(dk):''].filter(Boolean).join(' ')}</span>`}</span>`).join('')+(hasText&&dk>=.05?`<em class="leg-dist" title="${tr('直线距离','Straight-line distance')}">${fmtKm(dk)}</em>`:'');
     leg=`<div class="st-leg${long?' long':''}"><span></span><span class="st-rail"></span>${chips?`<div class="leg-list">${chips}</div>`:'<span></span>'}</div>`;
   }
-  return `<li class="stop" data-drag="stop" data-di="${di}" data-i="${i}"><div class="st-row"><span class="st-time">${time}</span><span class="st-node"><i class="${pc}"></i></span><button type="button" class="place" data-id="${esc(s.place)}"><span class="st-name"><span>${esc(p.name)}</span>${warn?`<span class="wb" title="${tr('可能放错了地点','Possibly the wrong place')}">!</span>`:''}</span><span class="st-sub">${esc(sub)}</span></button>${grip()}</div>${leg}</li>`;
+  return `<li class="stop" data-drag="stop" data-di="${di}" data-i="${i}"><div class="st-row"><span class="st-time">${time}</span><span class="st-node"><i class="${pc}">${nodeNum(d,s,p)}</i></span><button type="button" class="place" data-id="${esc(s.place)}"><span class="st-name"><span>${esc(p.name)}</span>${warn?`<span class="wb" title="${tr('可能放错了地点','Possibly the wrong place')}">!</span>`:''}</span><span class="st-sub"><span>${esc(sub)}</span></span></button>${grip()}</div>${leg}</li>`;
 }
 function daySpan(d){
   const ts=d.stops.flatMap(s=>[s.time,s.end]).filter(t=>mins(t)!=null),parts=[];
@@ -1414,15 +1486,15 @@ function stopRowEdit(d,di,s,i){
   let leg='';
   if(nx){
     const info=legInfo(d,i),m=s.mode||(info&&info.items[0]?info.items[0].mode:'route');
-    leg=`<div class="st-leg"><span></span><span class="st-rail"></span><div class="leg-list"><div class="leg-edit"><label class="md-pick" title="${tr('交通方式','Transport')}">${MODE_ICON[m]}<select data-sf="mode" aria-label="${tr('交通方式','Transport')}">${modeOptions(s.mode)}</select></label><textarea class="qi" data-sf="leg" rows="1" placeholder="${tr('怎么去下一站，多段用；分开','How to get to the next stop; separate legs with ;')}" aria-label="${tr('去下一站的交通','How to get to the next stop')}">${esc(s.leg)}</textarea></div></div></div>`;
+    leg=`<div class="st-leg"><span></span><span class="st-rail"></span><div class="leg-list"><div class="leg-edit"><label class="md-pick" title="${tr('交通方式','Transport')}">${MODE_ICON[m]}<select data-sf="mode" aria-label="${tr('交通方式','Transport')}">${modeOptions(s.mode)}</select></label><textarea class="qi" data-sf="leg" rows="1" placeholder="${tr('交通','Transport')}" aria-label="${tr('去下一站的交通','How to get to the next stop')}">${esc(s.leg)}</textarea></div></div></div>`;
   }
-  return `<li class="stop" data-drag="stop" data-di="${di}" data-i="${i}"><div class="st-row"><span class="st-time ed">${timeField('time',tv(s.time),tr('到达','Arrive'))}${timeField('end',tv(s.end),tr('离开','Leave'))}</span><span class="st-node"><i class="${pc}"></i></span><button type="button" class="place" data-id="${esc(s.place)}"><span class="st-name"><span>${esc(p.name)}</span></span><span class="st-sub">${esc(p.desc||p.nameLocal||kindName(p.kind))}</span></button><span class="st-ops">${grip()}${ibtn('data-sa="rm"',ICON.trash,tr('删除这一站','Remove stop'),'sm del')}</span></div>${leg}</li>`;
+  return `<li class="stop" data-drag="stop" data-di="${di}" data-i="${i}"><div class="st-row"><span class="st-time ed">${timeField('time',tv(s.time),tr('到达','Arrive'))}${timeField('end',tv(s.end),tr('离开','Leave'))}</span><span class="st-node"><i class="${pc}">${nodeNum(d,s,p)}</i></span><button type="button" class="place" data-id="${esc(s.place)}"><span class="st-name"><span>${esc(p.name)}</span></span><span class="st-sub">${esc(p.desc||p.nameLocal||kindName(p.kind))}</span></button><span class="st-ops">${grip()}${ibtn('data-sa="rm"',ICON.trash,tr('删除这一站','Remove stop'),'sm del')}</span></div>${leg}</li>`;
 }
 function dayEdit(d,di){
-  return `<section class="day editing" style="--c:${dvar(di)}" data-sec="${di}" data-ed="${di}"><div class="day-h"><span class="badge ed"><input data-df="date" value="${esc(d.date)}" placeholder="${tr('日期','Date')}" aria-label="${tr('日期','Date')}"><input data-df="weekday" value="${esc(d.weekday)}" placeholder="${tr('星期','Day')}" aria-label="${tr('星期','Weekday')}"></span><span class="day-t"><input class="qi dtitle" data-df="title" value="${esc(d.title)}" placeholder="${tr('这一天的标题','Title for this day')}" aria-label="${tr('标题','Title')}"><p>${daySpan(d)}</p></span>${ibtn('data-done',ICON.done,tr('完成','Done'),'pri')}</div>`
-    +`<textarea class="qi notes notes-ed" data-df="notes" rows="1" placeholder="${tr('备注：起床时间、早饭、提醒','Notes: wake-up time, breakfast, reminders')}" aria-label="${tr('备注','Notes')}">${esc(d.notes)}</textarea>`
+  return `<section class="day editing" style="--c:${dvar(di)}" data-sec="${di}" data-ed="${di}"><div class="day-h"><span class="badge ed"><input data-df="date" value="${esc(d.date)}" placeholder="${tr('日期','Date')}" aria-label="${tr('日期','Date')}"><input data-df="weekday" value="${esc(d.weekday)}" placeholder="${tr('星期','Day')}" aria-label="${tr('星期','Weekday')}"></span><span class="day-t"><input class="qi dtitle" data-df="title" value="${esc(d.title)}" placeholder="${tr('标题','Title')}" aria-label="${tr('标题','Title')}"><p>${daySpan(d)}</p></span>${ibtn('data-done',ICON.done,tr('完成','Done'),'pri')}</div>`
+    +`<textarea class="qi notes notes-ed" data-df="notes" rows="1" placeholder="${tr('备注','Notes')}" aria-label="${tr('备注','Notes')}">${esc(d.notes)}</textarea>`
     +`<ol class="stops" data-list="${di}" data-empty="${tr('把地点拖到这里','Drop places here')}">${d.stops.map((s,i)=>stopRowEdit(d,di,s,i)).join('')}</ol>`
-    +`<div class="ed-foot"><select class="fi addstop" data-add-stop="${di}" aria-label="${tr('添加一站','Add a stop')}">${placeOptions('',`<option value="">${tr('＋ 添加一站','+ Add a stop')}</option><option value="__new">${tr('搜索或在地图上选一个新地点','Find or pick a new place')}</option>`)}</select><span class="sp"></span>${ibtn(`data-del-day="${di}"`,ICON.trash,tr('删除这一天','Delete this day'),'del')}</div></section>`;
+    +`<div class="ed-foot"><select class="fi addstop" data-add-stop="${di}" aria-label="${tr('添加一站','Add a stop')}">${placeOptions('',`<option value="">${tr('＋ 添加一站','+ Add a stop')}</option><option value="__new">${tr('新地点…','New place…')}</option>`)}</select><span class="sp"></span>${ibtn(`data-del-day="${di}"`,ICON.trash,tr('删除这一天','Delete this day'),'del')}</div></section>`;
 }
 function listSection(title,ids,cls){
   return `<section class="sect"><h2>${title}</h2>${ids.map(id=>{const p=T.places[id];
@@ -1537,7 +1609,7 @@ function renderDetail(id){
     <div class="fl">${tr('详细信息','Details')}</div>
     ${facts?`<div class="facts-ed">${facts}</div>`:''}
     <button type="button" class="linkbtn" id="addFact">${tr('＋ 添加一条','+ Add a line')}</button>
-    <div class="fl">${tr('位置（纬度, 经度）','Position (latitude, longitude)')}</div>
+    <div class="fl">${tr('位置','Position')}</div>
     <div class="llrow"><input class="qi mono" data-f="ll" value="${p.lat}, ${p.lng}" inputmode="decimal" aria-label="${tr('纬度, 经度','Latitude, longitude')}"><button type="button" class="btn sm" id="look">${tr('按名称查找','Find by name')}</button></div>
     <div class="found" id="found"></div>
     <label class="chk"><input type="checkbox" data-f="approx" ${p.approx?'checked':''}>${tr('这是大致位置','This is an approximate position')}</label>
@@ -1575,7 +1647,7 @@ async function lookup(){
     if(!r.ok)throw new Error(r.status);
     lastFound=await r.json();
     const box=$('#found');if(!box)return;
-    box.innerHTML=lastFound.length?lastFound.map((x,i)=>`<button type="button" data-found="${i}">${esc(x.display_name)}</button>`).join('')+`<small>${tr('结果来自 OpenStreetMap Nominatim。','Results from OpenStreetMap Nominatim.')}</small>`
+    box.innerHTML=lastFound.length?lastFound.map((x,i)=>`<button type="button" data-found="${i}">${esc(x.display_name)}</button>`).join('')
       :`<small>${tr('没有找到。可以把名称改成英文或当地名称再试，或者在 Google 地图上右键复制坐标。','Nothing found. Try the English or local name, or right-click in Google Maps to copy the coordinates.')}</small>`;
   }catch(e){const box=$('#found');if(box)box.innerHTML=`<small>${tr('查找失败，请检查网络后再试。','Search failed. Check the connection and try again.')}</small>`;}
 }
@@ -1637,7 +1709,7 @@ function initMap(){
   $('#laymenu').onclick=e=>{const b=e.target.closest('[data-base]');if(!b)return;baseMode=b.dataset.base;try{localStorage.setItem('itinmap.base',baseMode);}catch(_){}setTiles();closeLayers();};
   const legend=$('#legend'),showLegend=on=>{legend.classList.toggle('show',on);$('#lgt').setAttribute('aria-expanded',on);};
   let lp=null;try{lp=localStorage.getItem('itinmap.legend');}catch(e){}
-  showLegend(!mob.matches&&lp!=='0');
+  showLegend(lp==='1');
   $('#lgt').onclick=()=>{const on=!legend.classList.contains('show');showLegend(on);try{localStorage.setItem('itinmap.legend',on?'1':'0');}catch(e){}};
   $('#lgx').onclick=()=>{showLegend(false);try{localStorage.setItem('itinmap.legend','0');}catch(e){}};
 }
@@ -1681,7 +1753,7 @@ function markerHTML(id){
   else if(p.kind==='hotel'){cls+=' hotel';label=tr('宿','H');}
   else if(p.kind==='transport')cls+=' transport';
   else{if(di==null)cls+=' free';
-    label=di==null?'':typeof activeDay==='number'&&di===activeDay?String(T.days[di].stops.findIndex(s=>s.place===id)+1):String(di+1);}
+    label=di==null?'':String(T.days[di].stops.findIndex(s=>s.place===id)+1);}
   if(p.approx)cls+=' approx';
   if(placeFlag[id])cls+=' warn';
   if(selected===id)cls+=' sel';
@@ -1804,7 +1876,7 @@ function resFoot(q){
 function showTips(){
   if(pv)return;
   ms.res.hidden=false;ms.items=[];
-  ms.res.innerHTML=`<div class="ms-msg">${tr('输入名称搜索，或粘贴 Google 地图链接、坐标。也可以在地图上右键（手机上长按）直接选点。','Type a name, or paste a Google Maps link or coordinates. You can also right-click the map (long-press on a phone) to pick a point.')}</div>${resFoot('')}`;
+  ms.res.innerHTML=resFoot('');
 }
 function showMsg(t,q){if(pv)return;ms.res.hidden=false;ms.items=[];ms.res.innerHTML=`<div class="ms-msg">${t}</div>${resFoot(q||'')}`;}
 async function runSearch(){
@@ -1824,7 +1896,7 @@ async function runSearch(){
     ms.items=items;ms.active=-1;ms.res.hidden=false;
     ms.res.innerHTML=(items.length?items.map((it,i)=>{const k=KIND_MARK[it.kind];
       return `<button type="button" class="ms-item" data-i="${i}"><span class="ki" style="--c:${k[2]}">${tr(k[0],k[1])}</span><b>${esc(it.name)}</b><span class="km">${fmtKm(km(c,it))}</span>${it.addr?`<small>${esc(it.addr)}</small>`:''}</button>`;}).join('')
-      :`<div class="ms-msg">${tr('没有找到。可以换个写法，或者在 Google 地图里找到后把链接粘贴进来。','Nothing found. Try another spelling, or find it in Google Maps and paste the link here.')}</div>`)+resFoot(q);
+      :`<div class="ms-msg">${tr('没有找到','Nothing found')}</div>`)+resFoot(q);
   }catch(e){if(seq===ms.seq)showMsg(tr('搜索失败，请检查网络后再试。','Search failed. Check the connection and try again.'),q);}
 }
 function previewAt(ll,name,addr,kind,fromText){
@@ -1986,7 +2058,7 @@ panel.addEventListener('keydown',e=>{
   if(moveStop({di,i},di,j)){const n=panel.querySelector(`[data-drag="stop"][data-di="${di}"][data-i="${j}"] .grip`);if(n)n.focus();}
 });
 function sheetOffset(){return mob.matches?sheetPx(sheet):0;}
-function fitPad(){return mob.matches?{paddingTopLeft:[28,64],paddingBottomRight:[28,sheetOffset()+24]}:{paddingTopLeft:[56,56],paddingBottomRight:[64,56]};}
+function fitPad(){return mob.matches?{paddingTopLeft:[28,64],paddingBottomRight:[28,sheetOffset()+24]}:{paddingTopLeft:[56,80],paddingBottomRight:[70,96]};}
 function corePoints(ids){
   const pts=ids.map(id=>T.places[id]).filter(Boolean);
   if(pts.length<3)return pts;
@@ -2136,7 +2208,7 @@ async function makePoster(){
         ctx.lineWidth=4;
         if(p.kind==='hotel'){ctx.fillStyle='#fff';ctx.strokeStyle='#1B2430';rr(ctx,x-15,y-15,30,30,7);ctx.fill();ctx.stroke();ctx.fillStyle='#1B2430';ctx.font=pfont(700,17);ctx.textAlign='center';ctx.fillText(tr('宿','H'),x,y+6);}
         else if(p.kind==='transport'){ctx.fillStyle='#fff';ctx.strokeStyle=col;ctx.lineWidth=5;ctx.beginPath();ctx.arc(x,y,11,0,7);ctx.fill();ctx.stroke();ctx.fillStyle=col;ctx.beginPath();ctx.arc(x,y,4,0,7);ctx.fill();}
-        else{ctx.fillStyle=col;ctx.strokeStyle='#fff';ctx.beginPath();ctx.arc(x,y,17,0,7);ctx.fill();ctx.stroke();ctx.fillStyle='#fff';ctx.font=pfont(700,18);ctx.textAlign='center';ctx.fillText(String(one?i+1:di+1),x,y+6);}
+        else{ctx.fillStyle=col;ctx.strokeStyle='#fff';ctx.beginPath();ctx.arc(x,y,17,0,7);ctx.fill();ctx.stroke();ctx.fillStyle='#fff';ctx.font=pfont(700,18);ctx.textAlign='center';ctx.fillText(String(d.stops.findIndex(x=>x.place===s.place)+1),x,y+6);}
         if(one){ctx.textAlign='left';ctx.font=pfont(600,19);const t=fitText(ctx,p.name,260);ctx.lineWidth=5;ctx.strokeStyle='rgba(255,255,255,.95)';ctx.strokeText(t,x+22,y+7);ctx.fillStyle='#1B2430';ctx.fillText(t,x+22,y+7);}
         ctx.textAlign='left';
       });});
@@ -2253,7 +2325,7 @@ $('#pvClose').onclick=()=>{const pv=$('#poster');pv.hidden=true;URL.revokeObject
 /* ================= start ================= */
 loadStore();applyI18n();renderTrips();$('#ver').textContent=VERSION;
 </script>
-<script type="application/json" id="sample-zh">{"version":1,"title":"京都和大阪 3 日（示例）","dateRange":"4.10–4.12","places":{"hnd":{"name":"羽田机场","nameLocal":"Haneda Airport","lat":35.5494,"lng":139.7798,"approx":false,"kind":"transport","desc":"","facts":[]},"kix":{"name":"关西国际机场","nameLocal":"Kansai International Airport","lat":34.432,"lng":135.2304,"approx":false,"kind":"transport","desc":"","facts":[["去京都","JR Haruka 特急，约 75 分钟"]]},"kyoto_st":{"name":"京都站","nameLocal":"Kyoto Station","lat":34.9858,"lng":135.7588,"approx":false,"kind":"transport","desc":"","facts":[]},"hotel":{"name":"京都站附近的酒店","lat":34.9872,"lng":135.7605,"approx":true,"kind":"hotel","desc":"示例里的住处，位置为大致位置。","facts":[["入住","4.10–4.12，2 晚"]]},"inari":{"name":"伏见稻荷大社","nameLocal":"伏見稲荷大社","lat":34.9671,"lng":135.7727,"approx":false,"kind":"sight","desc":"千本鸟居，早上人少。","facts":[["开放","全天"],["门票","免费"]],"link":"https://inari.jp"},"nishiki":{"name":"锦市场","nameLocal":"錦市場","lat":34.6655,"lng":135.5066,"approx":false,"kind":"food","desc":"边走边吃当午饭。","facts":[["营业","大多 10:00–17:00"]]},"kiyomizu":{"name":"清水寺","nameLocal":"清水寺","lat":34.9949,"lng":135.785,"approx":false,"kind":"sight","desc":"清水舞台，下山经二年坂、三年坂。","facts":[["门票","500 日元"]],"link":"https://www.kiyomizudera.or.jp"},"yasaka":{"name":"八坂神社","nameLocal":"八坂神社","lat":35.0037,"lng":135.7785,"approx":false,"kind":"sight","desc":"","facts":[]},"gion":{"name":"祇园花见小路","nameLocal":"花見小路通","lat":35.0025,"lng":135.7751,"approx":true,"kind":"sight","desc":"傍晚散步，附近吃晚饭。","facts":[]},"bamboo":{"name":"岚山竹林小径","nameLocal":"竹林の小径","lat":35.017,"lng":135.6713,"approx":false,"kind":"sight","desc":"8 点前到，人最少。","facts":[]},"togetsukyo":{"name":"渡月桥","nameLocal":"渡月橋","lat":35.0129,"lng":135.6778,"approx":false,"kind":"sight","desc":"","facts":[]},"osaka_castle":{"name":"大阪城","nameLocal":"大阪城","lat":34.6873,"lng":135.5262,"approx":false,"kind":"sight","desc":"天守阁里是博物馆。","facts":[["门票","600 日元"],["开放","09:00–17:00"]]},"dotonbori":{"name":"道顿堀","nameLocal":"道頓堀","lat":34.6687,"lng":135.5013,"approx":false,"kind":"food","desc":"章鱼烧、大阪烧。","facts":[]},"nara":{"name":"奈良公园","nameLocal":"奈良公園","lat":34.6851,"lng":135.843,"approx":false,"kind":"backup","desc":"下雨或时间多出来时的半日备选。","facts":[]},"kinkakuji":{"name":"金阁寺","nameLocal":"金閣寺","lat":35.0394,"lng":135.7292,"approx":false,"kind":"backup","desc":"","facts":[]}},"days":[{"date":"4.10","weekday":"周五","title":"飞到关西","notes":"晚饭在京都站附近吃。","stops":[{"place":"hnd","time":"15:30","leg":"飞往关西机场 15:30–16:45"},{"place":"kix","time":"16:45","leg":"JR Haruka 17:15–18:30"},{"place":"kyoto_st","time":"18:30","leg":"步行 5 分钟"},{"place":"hotel","time":"18:40","leg":""}]},{"date":"4.11","weekday":"周六","title":"东山一日","notes":"07:00 起床。示例里故意把锦市场的坐标放在了大阪，用来演示提醒。","stops":[{"place":"hotel","time":"07:30","leg":"JR 奈良线 2 站"},{"place":"inari","time":"08:00","leg":"京阪电车到祇园四条"},{"place":"nishiki","time":"11:30","leg":"巴士约 15 分钟"},{"place":"kiyomizu","time":"13:30","leg":"步行经二年坂"},{"place":"yasaka","time":"16:00","leg":"步行 5 分钟"},{"place":"gion","time":"17:00","leg":"巴士回京都站"},{"place":"hotel","time":"20:30","leg":""}]},{"date":"4.12","weekday":"周日","title":"岚山和大阪","notes":"退房后行李寄存在京都站，或直接带到大阪。","stops":[{"place":"hotel","time":"07:00","leg":"JR 嵯峨野线到嵯峨岚山"},{"place":"bamboo","time":"07:40","leg":"步行 10 分钟"},{"place":"togetsukyo","time":"09:30","leg":"JR 到大阪，约 1 小时"},{"place":"osaka_castle","time":"12:30","leg":"地铁到难波"},{"place":"dotonbori","time":"15:30","leg":"南海特急 Rapi:t 到机场"},{"place":"kix","time":"18:30","leg":"20:30 返程航班"}]}],"backups":["nara","kinkakuji"]}</script>
-<script type="application/json" id="sample-en">{"version":1,"title":"Kyoto and Osaka in 3 days (sample)","dateRange":"4.10–4.12","places":{"hnd":{"name":"Haneda Airport","nameLocal":"羽田空港","lat":35.5494,"lng":139.7798,"approx":false,"kind":"transport","desc":"","facts":[]},"kix":{"name":"Kansai International Airport","nameLocal":"関西国際空港","lat":34.432,"lng":135.2304,"approx":false,"kind":"transport","desc":"","facts":[["To Kyoto","JR Haruka express, about 75 minutes"]]},"kyoto_st":{"name":"Kyoto Station","nameLocal":"京都駅","lat":34.9858,"lng":135.7588,"approx":false,"kind":"transport","desc":"","facts":[]},"hotel":{"name":"Hotel near Kyoto Station","lat":34.9872,"lng":135.7605,"approx":true,"kind":"hotel","desc":"The sample's place to stay. The position is approximate.","facts":[["Stay","4.10–4.12, 2 nights"]]},"inari":{"name":"Fushimi Inari Taisha","nameLocal":"伏見稲荷大社","lat":34.9671,"lng":135.7727,"approx":false,"kind":"sight","desc":"Thousands of torii gates. Quiet early in the morning.","facts":[["Hours","Always open"],["Entry","Free"]],"link":"https://inari.jp"},"nishiki":{"name":"Nishiki Market","nameLocal":"錦市場","lat":34.6655,"lng":135.5066,"approx":false,"kind":"food","desc":"Street food for lunch.","facts":[["Hours","Most stalls 10:00–17:00"]]},"kiyomizu":{"name":"Kiyomizu-dera","nameLocal":"清水寺","lat":34.9949,"lng":135.785,"approx":false,"kind":"sight","desc":"The wooden stage. Walk down through Ninenzaka and Sannenzaka.","facts":[["Entry","500 yen"]],"link":"https://www.kiyomizudera.or.jp"},"yasaka":{"name":"Yasaka Shrine","nameLocal":"八坂神社","lat":35.0037,"lng":135.7785,"approx":false,"kind":"sight","desc":"","facts":[]},"gion":{"name":"Hanamikoji, Gion","nameLocal":"花見小路通","lat":35.0025,"lng":135.7751,"approx":true,"kind":"sight","desc":"Evening walk, dinner nearby.","facts":[]},"bamboo":{"name":"Arashiyama Bamboo Grove","nameLocal":"竹林の小径","lat":35.017,"lng":135.6713,"approx":false,"kind":"sight","desc":"Arrive before 8:00 for the fewest people.","facts":[]},"togetsukyo":{"name":"Togetsukyo Bridge","nameLocal":"渡月橋","lat":35.0129,"lng":135.6778,"approx":false,"kind":"sight","desc":"","facts":[]},"osaka_castle":{"name":"Osaka Castle","nameLocal":"大阪城","lat":34.6873,"lng":135.5262,"approx":false,"kind":"sight","desc":"The main tower is a museum.","facts":[["Entry","600 yen"],["Hours","09:00–17:00"]]},"dotonbori":{"name":"Dotonbori","nameLocal":"道頓堀","lat":34.6687,"lng":135.5013,"approx":false,"kind":"food","desc":"Takoyaki and okonomiyaki.","facts":[]},"nara":{"name":"Nara Park","nameLocal":"奈良公園","lat":34.6851,"lng":135.843,"approx":false,"kind":"backup","desc":"Half-day option for rain or spare time.","facts":[]},"kinkakuji":{"name":"Kinkaku-ji","nameLocal":"金閣寺","lat":35.0394,"lng":135.7292,"approx":false,"kind":"backup","desc":"","facts":[]}},"days":[{"date":"4.10","weekday":"Fri","title":"Fly to Kansai","notes":"Dinner near Kyoto Station.","stops":[{"place":"hnd","time":"15:30","leg":"Flight to Kansai 15:30–16:45"},{"place":"kix","time":"16:45","leg":"JR Haruka 17:15–18:30"},{"place":"kyoto_st","time":"18:30","leg":"5 min walk"},{"place":"hotel","time":"18:40","leg":""}]},{"date":"4.11","weekday":"Sat","title":"A day in Higashiyama","notes":"Up at 07:00. In this sample, Nishiki Market is placed in Osaka on purpose to show the warning.","stops":[{"place":"hotel","time":"07:30","leg":"JR Nara Line, 2 stops"},{"place":"inari","time":"08:00","leg":"Keihan line to Gion-Shijo"},{"place":"nishiki","time":"11:30","leg":"Bus, about 15 min"},{"place":"kiyomizu","time":"13:30","leg":"Walk through Ninenzaka"},{"place":"yasaka","time":"16:00","leg":"5 min walk"},{"place":"gion","time":"17:00","leg":"Bus to Kyoto Station"},{"place":"hotel","time":"20:30","leg":""}]},{"date":"4.12","weekday":"Sun","title":"Arashiyama and Osaka","notes":"After checking out, leave luggage at Kyoto Station or take it to Osaka.","stops":[{"place":"hotel","time":"07:00","leg":"JR Sagano Line to Saga-Arashiyama"},{"place":"bamboo","time":"07:40","leg":"10 min walk"},{"place":"togetsukyo","time":"09:30","leg":"JR to Osaka, about 1 hour"},{"place":"osaka_castle","time":"12:30","leg":"Subway to Namba"},{"place":"dotonbori","time":"15:30","leg":"Nankai Rapi:t to the airport"},{"place":"kix","time":"18:30","leg":"Flight home at 20:30"}]}],"backups":["nara","kinkakuji"]}</script>
+<script type="application/json" id="sample-zh">{"version":1,"title":"京都和大阪 3 日（示例）","dateRange":"4.10–4.12","places":{"hnd":{"name":"羽田机场","nameLocal":"Haneda Airport","lat":35.5494,"lng":139.7798,"approx":false,"kind":"transport","desc":"","facts":[]},"kix":{"name":"关西国际机场","nameLocal":"Kansai International Airport","lat":34.432,"lng":135.2304,"approx":false,"kind":"transport","desc":"在 1 号航站楼买 ICOCA 卡","facts":[["去京都","JR Haruka 特急，约 75 分钟"]]},"hotel":{"name":"京都站附近的酒店","lat":34.9872,"lng":135.7605,"approx":true,"kind":"hotel","desc":"住 2 晚，示例里的住处","facts":[["入住","4.10–4.12"]]},"inari":{"name":"伏见稻荷大社","nameLocal":"伏見稲荷大社","lat":34.9671,"lng":135.7727,"approx":false,"kind":"sight","desc":"千本鸟居，早上人少","facts":[["开放","全天"],["门票","免费"]],"link":"https://inari.jp"},"nishiki":{"name":"锦市场","nameLocal":"錦市場","lat":35.005,"lng":135.7649,"approx":false,"kind":"food","desc":"边走边吃当午饭","facts":[["营业","大多 10:00–17:00"]]},"kiyomizu":{"name":"清水寺","nameLocal":"清水寺","lat":34.9949,"lng":135.785,"approx":false,"kind":"sight","desc":"清水舞台","facts":[["门票","500 日元"],["开放","06:00–18:00"]],"link":"https://www.kiyomizudera.or.jp"},"yasaka":{"name":"八坂神社","nameLocal":"八坂神社","lat":35.0037,"lng":135.7785,"approx":false,"kind":"sight","desc":"","facts":[]},"gion":{"name":"祇园花见小路","nameLocal":"花見小路通","lat":35.0025,"lng":135.7751,"approx":true,"kind":"sight","desc":"傍晚散步，附近吃晚饭","facts":[]},"bamboo":{"name":"岚山竹林小径","nameLocal":"竹林の小径","lat":35.017,"lng":135.6713,"approx":false,"kind":"sight","desc":"8 点前人最少","facts":[]},"togetsukyo":{"name":"渡月桥","nameLocal":"渡月橋","lat":35.0129,"lng":135.6778,"approx":false,"kind":"sight","desc":"","facts":[]},"osaka_castle":{"name":"大阪城","nameLocal":"大阪城","lat":34.6873,"lng":135.5262,"approx":false,"kind":"sight","desc":"天守阁里是博物馆","facts":[["门票","1200 日元"],["开放","09:00–17:00"]],"link":"https://www.osakacastle.net"},"dotonbori":{"name":"道顿堀","nameLocal":"道頓堀","lat":34.6687,"lng":135.5013,"approx":false,"kind":"food","desc":"章鱼烧、大阪烧","facts":[]},"nara":{"name":"奈良公园","nameLocal":"奈良公園","lat":34.6851,"lng":135.843,"approx":false,"kind":"backup","desc":"下雨或时间多出来时的半日备选","facts":[]},"kinkakuji":{"name":"金阁寺","nameLocal":"金閣寺","lat":35.0394,"lng":135.7292,"approx":false,"kind":"backup","desc":"","facts":[["门票","500 日元"]]}},"days":[{"date":"4.10","weekday":"周五","title":"飞到关西","notes":"晚饭在京都站附近吃。","stops":[{"place":"hnd","time":"","end":"15:30","mode":"flight","leg":"15:30–16:45 航班 羽田–关西"},{"place":"kix","time":"16:45","end":"17:15","mode":"train","leg":"17:15–18:30 JR Haruka 特急到京都站；18:30–18:40 步行"},{"place":"hotel","time":"18:40","end":"","leg":""}]},{"date":"4.11","weekday":"周六","title":"东山一日","notes":"06:45 起床，早饭在便利店买。","stops":[{"place":"hotel","time":"","end":"07:30","mode":"train","leg":"07:30–07:40 JR 奈良线 京都–稻荷"},{"place":"inari","time":"07:45","end":"09:45","mode":"train","leg":"09:50–10:05 京阪本线 伏见稻荷–祇园四条；10:05–10:15 步行"},{"place":"nishiki","time":"10:15","end":"11:45","mode":"walk","leg":"11:45–12:15 步行经四条通"},{"place":"kiyomizu","time":"12:15","end":"14:30","mode":"walk","leg":"14:30–15:00 步行下山，经二年坂、三年坂"},{"place":"yasaka","time":"15:00","end":"15:40","mode":"walk","leg":"15:40–15:50 步行"},{"place":"gion","time":"15:50","end":"18:40","mode":"bus","leg":"18:40–19:05 206 路巴士回京都站"},{"place":"hotel","time":"19:10","end":"","leg":""}]},{"date":"4.12","weekday":"周日","title":"岚山和大阪","notes":"退房时用宅急便把箱子直接送到关西机场。","stops":[{"place":"hotel","time":"","end":"06:50","mode":"train","leg":"06:50–07:05 JR 嵯峨野线 京都–嵯峨岚山；07:05–07:20 步行"},{"place":"bamboo","time":"07:20","end":"08:30","mode":"walk","leg":"08:30–08:40 步行"},{"place":"togetsukyo","time":"08:40","end":"09:40","mode":"train","leg":"09:50–10:05 JR 嵯峨岚山–京都；10:15–10:45 JR 新快速 京都–大阪；10:50–11:05 地铁到森之宫"},{"place":"osaka_castle","time":"11:10","end":"13:30","mode":"subway","leg":"13:40–14:00 地铁到难波"},{"place":"dotonbori","time":"14:00","end":"17:30","mode":"train","leg":"17:45–18:25 南海 Rapi:t 难波–关西机场"},{"place":"kix","time":"18:25","end":"20:30","mode":"flight","leg":"20:30–21:45 航班 关西–羽田"},{"place":"hnd","time":"21:45","end":"","leg":""}]}],"backups":["nara","kinkakuji"]}</script>
+<script type="application/json" id="sample-en">{"version":1,"title":"Kyoto and Osaka in 3 days (sample)","dateRange":"4.10–4.12","places":{"hnd":{"name":"Haneda Airport","nameLocal":"羽田空港","lat":35.5494,"lng":139.7798,"approx":false,"kind":"transport","desc":"","facts":[]},"kix":{"name":"Kansai International Airport","nameLocal":"関西国際空港","lat":34.432,"lng":135.2304,"approx":false,"kind":"transport","desc":"Buy an ICOCA card in Terminal 1","facts":[["To Kyoto","JR Haruka express, about 75 minutes"]]},"hotel":{"name":"Hotel near Kyoto Station","lat":34.9872,"lng":135.7605,"approx":true,"kind":"hotel","desc":"2 nights, the sample's place to stay","facts":[["Stay","4.10–4.12"]]},"inari":{"name":"Fushimi Inari Taisha","nameLocal":"伏見稲荷大社","lat":34.9671,"lng":135.7727,"approx":false,"kind":"sight","desc":"Thousands of torii gates, quiet early in the morning","facts":[["Hours","Always open"],["Entry","Free"]],"link":"https://inari.jp"},"nishiki":{"name":"Nishiki Market","nameLocal":"錦市場","lat":35.005,"lng":135.7649,"approx":false,"kind":"food","desc":"Street food for lunch","facts":[["Hours","Most stalls 10:00–17:00"]]},"kiyomizu":{"name":"Kiyomizu-dera","nameLocal":"清水寺","lat":34.9949,"lng":135.785,"approx":false,"kind":"sight","desc":"The wooden stage","facts":[["Entry","500 yen"],["Hours","06:00–18:00"]],"link":"https://www.kiyomizudera.or.jp"},"yasaka":{"name":"Yasaka Shrine","nameLocal":"八坂神社","lat":35.0037,"lng":135.7785,"approx":false,"kind":"sight","desc":"","facts":[]},"gion":{"name":"Hanamikoji, Gion","nameLocal":"花見小路通","lat":35.0025,"lng":135.7751,"approx":true,"kind":"sight","desc":"Evening walk, dinner nearby","facts":[]},"bamboo":{"name":"Arashiyama Bamboo Grove","nameLocal":"竹林の小径","lat":35.017,"lng":135.6713,"approx":false,"kind":"sight","desc":"Fewest people before 8:00","facts":[]},"togetsukyo":{"name":"Togetsukyo Bridge","nameLocal":"渡月橋","lat":35.0129,"lng":135.6778,"approx":false,"kind":"sight","desc":"","facts":[]},"osaka_castle":{"name":"Osaka Castle","nameLocal":"大阪城","lat":34.6873,"lng":135.5262,"approx":false,"kind":"sight","desc":"The main tower is a museum","facts":[["Entry","1200 yen"],["Hours","09:00–17:00"]],"link":"https://www.osakacastle.net"},"dotonbori":{"name":"Dotonbori","nameLocal":"道頓堀","lat":34.6687,"lng":135.5013,"approx":false,"kind":"food","desc":"Takoyaki and okonomiyaki","facts":[]},"nara":{"name":"Nara Park","nameLocal":"奈良公園","lat":34.6851,"lng":135.843,"approx":false,"kind":"backup","desc":"Half-day option for rain or spare time","facts":[]},"kinkakuji":{"name":"Kinkaku-ji","nameLocal":"金閣寺","lat":35.0394,"lng":135.7292,"approx":false,"kind":"backup","desc":"","facts":[["Entry","500 yen"]]}},"days":[{"date":"4.10","weekday":"Fri","title":"Fly to Kansai","notes":"Dinner near Kyoto Station.","stops":[{"place":"hnd","time":"","end":"15:30","mode":"flight","leg":"15:30–16:45 flight Haneda–Kansai"},{"place":"kix","time":"16:45","end":"17:15","mode":"train","leg":"17:15–18:30 JR Haruka express to Kyoto Station; 18:30–18:40 walk"},{"place":"hotel","time":"18:40","end":"","leg":""}]},{"date":"4.11","weekday":"Sat","title":"A day in Higashiyama","notes":"Up at 06:45, breakfast from a convenience store.","stops":[{"place":"hotel","time":"","end":"07:30","mode":"train","leg":"07:30–07:40 JR Nara Line Kyoto–Inari"},{"place":"inari","time":"07:45","end":"09:45","mode":"train","leg":"09:50–10:05 Keihan Line Fushimi-Inari–Gion-Shijo; 10:05–10:15 walk"},{"place":"nishiki","time":"10:15","end":"11:45","mode":"walk","leg":"11:45–12:15 walk along Shijo-dori"},{"place":"kiyomizu","time":"12:15","end":"14:30","mode":"walk","leg":"14:30–15:00 walk down through Ninenzaka and Sannenzaka"},{"place":"yasaka","time":"15:00","end":"15:40","mode":"walk","leg":"15:40–15:50 walk"},{"place":"gion","time":"15:50","end":"18:40","mode":"bus","leg":"18:40–19:05 bus 206 to Kyoto Station"},{"place":"hotel","time":"19:10","end":"","leg":""}]},{"date":"4.12","weekday":"Sun","title":"Arashiyama and Osaka","notes":"At check-out, send the suitcase straight to Kansai Airport with a luggage delivery service.","stops":[{"place":"hotel","time":"","end":"06:50","mode":"train","leg":"06:50–07:05 JR Sagano Line Kyoto–Saga-Arashiyama; 07:05–07:20 walk"},{"place":"bamboo","time":"07:20","end":"08:30","mode":"walk","leg":"08:30–08:40 walk"},{"place":"togetsukyo","time":"08:40","end":"09:40","mode":"train","leg":"09:50–10:05 JR Saga-Arashiyama–Kyoto; 10:15–10:45 JR Special Rapid Kyoto–Osaka; 10:50–11:05 metro to Morinomiya"},{"place":"osaka_castle","time":"11:10","end":"13:30","mode":"subway","leg":"13:40–14:00 metro to Namba"},{"place":"dotonbori","time":"14:00","end":"17:30","mode":"train","leg":"17:45–18:25 Nankai Rapi:t Namba–Kansai Airport"},{"place":"kix","time":"18:25","end":"20:30","mode":"flight","leg":"20:30–21:45 flight Kansai–Haneda"},{"place":"hnd","time":"21:45","end":"","leg":""}]}],"backups":["nara","kinkakuji"]}</script>
 </body>
 </html>
